@@ -1,0 +1,20 @@
+.PresentBox img {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 50px; 
+}
+
+.PresentBox img:hover {
+    cursor: pointer;
+}
+
+.PresentBox h3 {
+    width: 300px;
+    display: block;
+    text-align: center;
+    margin: 50px;
+}
+
+.PresentBox {
+}

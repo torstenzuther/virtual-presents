@@ -1,0 +1,21 @@
+.Present {
+    width: 50%;
+    display: block;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 4px;
+    border-color: lightcoral;
+    border-width: 10px;
+    border-style: groove;
+    text-align: center;
+}
+
+.Present p {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(43, 1, 8);
+}
+
+.Present img {
+    width: 80%;
+    height: 80%;
+}
