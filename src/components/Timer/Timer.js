@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import TimerMessage from './TimerMessage';
+import TimerMessage from '../TimerMessage/TimerMessage';
 import moment from 'moment';
 import 'moment/locale/de';
-import PresentBox from './PresentBox';
-import Present from './Present';
+import PresentBox from '../PresentBox/PresentBox';
+import Present from '../Present/Present';
 
 class Timer extends Component {
     

@@ -1,0 +1,8 @@
+.Navigation ul {
+    list-style: none;
+}
+
+.Navigation li {
+    display: inline;
+    margin-left: 10px;
+}

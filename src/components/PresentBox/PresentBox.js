@@ -1,5 +1,5 @@
 import React from 'react';
-import presentImg from './giftbox.svg';
+import presentImg from './../../assets/giftbox.svg';
 import styles from './PresentBox.module.css';
 
 const presentBox = (props) => (
