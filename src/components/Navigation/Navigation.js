@@ -6,9 +6,9 @@ const navigation = (props) => {
     return (
         <div className={styles.Navigation}>
             <ul>
-                <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/create">Create present</NavLink></li>
-                <li><NavLink to="/about">About</NavLink></li>
+                <li><NavLink exact activeClassName={styles.active} to="/">Home</NavLink></li>
+                <li><NavLink exact activeClassName={styles.active} to="/create">Create present</NavLink></li>
+                <li><NavLink exact activeClassName={styles.active} to="/about">About</NavLink></li>
             </ul>
         </div>
     );
