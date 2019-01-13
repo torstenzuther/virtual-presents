@@ -1,6 +1,11 @@
 import React from 'react';
 import styles from './Input.module.css';
+import DateTimePicker from 'react-datetime-picker';
 
+
+const onDateTimeValueChanged = (onChange, val, id) => {
+    onChange({target: { id: id, value: val}});
+}
 
 const input = (props) => {
 
@@ -8,7 +13,8 @@ const input = (props) => {
 
     switch (props.type) {
         case 'select':
-            input = <select {...props}>{props.options.map(option=> <option key={option}>{option}</option>)}</select>;
+            input = <select {...props}>{props.options.map(option=> 
+                <option key={option.key} value={option.key}>{option.value}</option>)}</select>;
             break;
         case 'textarea':
             input = <textarea {...props} ></textarea>;
@@ -17,7 +23,10 @@ const input = (props) => {
             input = <input type={props.type} {...props} />;
             break;
         case 'datetime':
-            input = <input type={props.type} {...props} />;
+            input = <DateTimePicker {...props} onChange={(val) => onDateTimeValueChanged(props.onChange, val, props.id)}/>;
+            break;
+        case 'button':
+            input = <button {...props}>{props.children}</button>;
             break;
         default:
             input = <input type="text" {...props} />;

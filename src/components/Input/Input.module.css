@@ -1,12 +1,30 @@
-.Input {
-    display: inline;
+.Input textarea:focus, input:focus, select:focus {
+    border: 4px solid #555;
+    border-radius: 5px;
 }
 
-.Input input {
+.Input textarea, input, select  {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+.Input button {
+    background-color: #555;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
-.Input select {
+.Input button:hover {
+    background-color: #888;
 }
 
 .Input label {
+    padding: 12px 12px 12px 0;
 }

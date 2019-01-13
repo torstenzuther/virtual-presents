@@ -1,11 +1,10 @@
 import React from 'react';
-import presentImg from './../../assets/giftbox.svg';
+import cssStyle from './PresentBox.module.css';
 
 const presentBox = (props) => {
-    
     return (
-    <div {...props}>
-        <img src={presentImg} alt="Dein Geschenk" onClick={props.clicked}/>
+    <div className={cssStyle.PresentBox} style={props.cssStyle}>
+        <img src={props.img} alt="Dein Geschenk" onClick={props.clicked}/>
         <h3>{props.text}</h3>
    </div>
 )};
