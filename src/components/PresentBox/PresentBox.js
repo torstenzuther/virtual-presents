@@ -1,12 +1,14 @@
 import React from 'react';
 import presentImg from './../../assets/giftbox.svg';
-import styles from './PresentBox.module.css';
 
-const presentBox = (props) => (
-    <div className={styles.PresentBox}>
+const presentBox = (props) => {
+    
+    return (
+    <div className={"presentBox"}>
         <img src={presentImg} alt="Dein Geschenk" onClick={props.clicked}/>
-        <h3>Alles Gute zum Geburtstag meine Liebe!</h3>
+        <h3>{props.text}</h3>
+        <style jsx>{props.style}</style>
    </div>
-);
+)};
 
 export default presentBox;

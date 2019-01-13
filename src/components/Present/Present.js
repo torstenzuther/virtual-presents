@@ -1,12 +1,11 @@
 import React from 'react';
-import styles from './Present.module.css';
-import presentImg from './present.JPG';
 
-const present = () => (
-    <div className={styles.Present}>
-        <p>Am 20.03.2019 gehen wir in Leipzig gemeinsam zum russischen Nationalballet!</p>
-        <img src={presentImg} alt="Dein Geschenk" />
+const present = (props) => {
+    return (
+    <div className={"present"}>
+        <p>{props.text}</p>
+        <style jsx>{props.style}</style>
     </div>
-);
+)};
 
 export default present;

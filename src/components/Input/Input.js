@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Input.module.css';
 
 
 const input = (props) => {
@@ -7,7 +8,7 @@ const input = (props) => {
 
     switch (props.type) {
         case 'select':
-            input = <select {...props}>{props.children}</select>;
+            input = <select {...props}>{props.options.map(option=> <option key={option}>{option}</option>)}</select>;
             break;
         case 'textarea':
             input = <textarea {...props} ></textarea>;
@@ -26,11 +27,11 @@ const input = (props) => {
     let label = null;
 
     if (props.id && props.label) {
-        label = <label for={props.id}>{props.label}</label>;
+        label = <label htmlFor={props.id}>{props.label}</label>;
     }
 
     return (
-        <>{label}{input}</>
+        <div className={styles.Input}>{label}{input}</div>
     )
 };
 

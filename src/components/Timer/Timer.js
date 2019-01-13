@@ -7,12 +7,9 @@ import Present from '../Present/Present';
 
 class Timer extends Component {
     
-    constructor(props) {
-        super(props);
-        this.state = {
-            showBox: true,
-            seconds: this.getSeconds()
-        };
+    state = {
+        showBox: true,
+        seconds: this.getSeconds()
     }
 
     getSeconds = () => {
