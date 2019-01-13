@@ -3,8 +3,8 @@ import TimerMessage from './../../components/TimerMessage/TimerMessage';
 import Present from './../../components/Present/Present';
 import PresentBox from './../../components/PresentBox/PresentBox';
 import Input from './../../components/Input/Input';
-import giftBox from './../../assets/giftbox.svg';
 import * as styles from './../../assets/styles';
+
 
 
 const inputs = [
@@ -59,9 +59,9 @@ class PresentInput extends Component {
                 <Input key={input.id} onChange={this.onValueChanged} 
                 value={this.state[input.id]} {...input} />)}
            </div>
-            <TimerMessage text={this.state.previewText} style={styles[this.state.style]}/>
-            <PresentBox text={this.state.presentTextBox} style={styles[this.state.style]} />
-            <Present text={this.state.presentText} style={styles[this.state.style]}/>
+            <TimerMessage text={this.state.previewText}/>
+            {/* <PresentBox text={this.state.presentTextBox} className={css(styles[this.state.style].style).presentTextBox} /> */}
+            {/* <Present text={this.state.presentText} className={css(styles[this.state.style].style).presentText}/> */}
         </div>);
     }
 }
