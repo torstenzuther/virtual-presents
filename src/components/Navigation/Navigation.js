@@ -9,6 +9,7 @@ const navigation = (props) => {
                 <li><NavLink exact activeClassName={styles.active} to="/">Home</NavLink></li>
                 <li><NavLink exact activeClassName={styles.active} to="/create">Create present</NavLink></li>
                 <li><NavLink exact activeClassName={styles.active} to="/about">About</NavLink></li>
+                <li><NavLink exact activeClassName={styles.active} to="/auth">Sign in</NavLink></li>
             </ul>
         </div>
     );

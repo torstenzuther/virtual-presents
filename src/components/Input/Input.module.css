@@ -1,6 +1,5 @@
 .Input textarea:focus, input:focus, select:focus {
-    border: 4px solid #555;
-    border-radius: 5px;
+    background-color: #eeeeee;
 }
 
 .Input textarea, input, select  {
@@ -27,4 +26,8 @@
 
 .Input label {
     padding: 12px 12px 12px 0;
+}
+
+.Invalid textarea, input, select {
+    border-color: red
 }

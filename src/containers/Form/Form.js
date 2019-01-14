@@ -2,11 +2,12 @@ import React from 'react'
 import Input from './../../components/Input/Input';
 
 const form = props => {
-    const inputs = props.inputs.map(input => 
-        <Input {...input} value={input.value} onChanged={()=>props.onChanged(input.id)}/>);
-    return (
-        <form>{inputs}</form>
-        );
+    return (<form>
+        {Object.keys(props.inputs).map(inputKey => 
+         <Input id={inputKey} key={inputKey} onChange={props.onChange} 
+         value={props.inputs[inputKey].value} {...props.inputs[inputKey]} />)}
+         <Input type="button" onClick={props.onSubmit}>{props.submitCaption}</Input>
+         </form>);
 };
 
 export default form;
