@@ -13,3 +13,33 @@ export const getSeconds = (dueDate) => {
     }
     return seconds;
 }
+
+export const getError = (value, validation) => {
+
+    if (!validation) {
+        return null;
+    }
+
+    if (validation.required) {
+        if (value.trim() === '') {
+            return "Required";
+        }
+    }
+
+    if (validation.minLength && validation.minLength > value.length) {
+        return "Too short";
+    }
+
+    if (validation.maxLength && validation.maxLength < value.length) {
+        return "Too long";
+    }
+
+    if (validation.email) {
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!re.test(String(value).toLowerCase())) {
+            return "Invalid email";
+        }
+    }
+
+    return null;
+};

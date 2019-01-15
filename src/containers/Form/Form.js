@@ -2,6 +2,7 @@ import React from 'react'
 import Input from './../../components/Input/Input';
 
 const form = props => {
+
     return (<form>
         {Object.keys(props.inputs).map(inputKey => 
          <Input id={inputKey} key={inputKey} onChange={props.onChange} 

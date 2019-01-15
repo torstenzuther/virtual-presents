@@ -2,23 +2,6 @@ import React, { Component } from 'react';
 import styles from './Input.module.css';
 import DateTimePicker from 'react-datetime-picker';
 
-
-const getError = (value, validation) => {
-    if (!validation) {
-        return null;
-    }
-
-    if (validation.minLength && validation.minLength > value.trim().length) {
-        return "Too short";
-    }
-
-    if (validation.maxLength && validation.maxLength < value.length) {
-        return "Too long";
-    }
-
-    return null;
-};
-
 class Input extends Component { 
     
     state = {
@@ -31,6 +14,7 @@ class Input extends Component {
     }
 
     onChanged(e, onChange) {
+        console.log("CHANGED");
         this.setState({touched: true});
         onChange(e);
     }
@@ -38,36 +22,31 @@ class Input extends Component {
     render() {
 
         let input;
-        let inputClass = [styles.Input];
-        let error;
-        if (this.state.touched) {
-            error = getError(this.props.value, this.props.validation);
-            if (error) {
-                error = <div>{error}</div>;
-                inputClass.push(styles.Invalid);
-            }
+        let inputStyle = styles.Valid;
+        if (this.props.error) {
+            inputStyle = styles.Invalid;
         }
+        
         switch (this.props.type) {
             case 'select':
-                input = <select {...this.props}>{this.props.options.map(option=> 
+                input = <select {...this.props} className={inputStyle}>{this.props.options.map(option=> 
                     <option key={option.key} value={option.key}>{option.value}</option>)}</select>;
                 break;
             case 'textarea':
-                input = <textarea {...this.props} onChange={e=>this.onChanged(e,this.props.onChange)}></textarea>;
+                input = <textarea {...this.props}  className={inputStyle} onChange={e=>this.onChanged(e,this.props.onChange)}></textarea>;
                 break;
             case 'datetime':
-                input = <DateTimePicker {...this.props} onChange={(val) => this.onDateTimeValueChanged(this.props.onChange, val, this.props.id)}/>;
+                input = <DateTimePicker {...this.props} className={inputStyle} onChange={(val) => this.onDateTimeValueChanged(this.props.onChange, val, this.props.id)}/>;
                 break;
             case 'button':
                 input = <button {...this.props}>{this.props.children}</button>;
                 break;
             case 'password':
             case 'email':
-            case 'color':
-                input = <input type={this.props.type} onChange={e=>this.onChanged(e,this.props.onChange)} {...this.props} />;
+                input = <input  {...this.props } className={inputStyle} type={this.props.type} onChange={e=>this.onChanged(e,this.props.onChange)} />;
                 break;
             default:
-                input = <input type="text"  onChange={e=>this.onChanged(e,this.props.onChange)} {...this.props } />;
+                input = <input  {...this.props } className={inputStyle} type="text"onChange={e=>this.onChanged(e,this.props.onChange)}  />;
                 break;
         }
 
@@ -76,9 +55,8 @@ class Input extends Component {
         if (this.props.id && this.props.label) {
             label = <label htmlFor={this.props.id}>{this.props.label}</label>;
         }
-
         return (
-            <div className={inputClass.join(' ')}>{label}{input}{error}</div>
+            <div className={styles.Input}>{label}{input}{this.props.error}</div>
         )
     };
 }

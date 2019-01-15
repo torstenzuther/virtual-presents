@@ -6,6 +6,7 @@ import * as styles from './../../assets/styles';
 import { getSeconds } from './../../utility/utility';
 import cssStyle  from './PresentInput.module.css';
 import Form from './../Form/Form';
+import { getError } from './../../utility/utility';
 
 class PresentInput extends Component {
 
@@ -21,7 +22,8 @@ class PresentInput extends Component {
                     cols: 60,
                     validation: {
                         minLength: 1,
-                        maxLength: 300
+                        maxLength: 300,
+                        required: true
                     },
                     value: 'Hello, in <seconds> seconds your present will appear here!'
                 },
@@ -39,7 +41,8 @@ class PresentInput extends Component {
                     cols: 60, 
                     validation: {
                         minLength: 1,
-                        maxLength: 300
+                        maxLength: 300,
+                        required: true
                     },
                     value: 'Happy birtdhay!'
                 },
@@ -51,7 +54,8 @@ class PresentInput extends Component {
                     cols: 60, 
                     validation: {
                         minLength: 1,
-                        maxLength: 300
+                        maxLength: 300,
+                        required: true
                     },
                     value: 'This is your personal present from us'
                 },
@@ -70,12 +74,13 @@ class PresentInput extends Component {
             },
             seconds: getSeconds(dueDate)
         }
-    }
-
+    }  
+    
     onValueChanged = (event) => {
         const input = this.state.inputs[event.target.id];
         const inputCopy = {...input};
         inputCopy.value = event.target.value;
+        inputCopy.error =  getError(inputCopy.value, inputCopy.validation);
         const inputsCopy = {...this.state.inputs};
         inputsCopy[event.target.id] = inputCopy;
         this.setState( {

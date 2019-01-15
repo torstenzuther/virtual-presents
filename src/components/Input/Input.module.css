@@ -1,14 +1,10 @@
-.Input textarea:focus, input:focus, select:focus {
-    background-color: #eeeeee;
+textarea:focus.Valid, input:focus.Valid, select:focus.Valid {
+    border: 3px solid;
 }
 
-.Input textarea, input, select  {
-    width: 100%;
-    padding: 12px;
+textarea.Valid, input.Valid, select.Valid  {
     border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
+}
 
 .Input button {
     background-color: #555;
@@ -28,6 +24,16 @@
     padding: 12px 12px 12px 0;
 }
 
-.Invalid textarea, input, select {
-    border-color: red
+textarea, input, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    resize: vertical;
+}
+textarea.Invalid, input.Invalid , select.Invalid  {
+    border: 1px solid red;
+}
+
+textarea:focus.Invalid, input:focus.Invalid, select:focus.Invalid {
+    border: 3px solid red;
 }
