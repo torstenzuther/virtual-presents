@@ -14,7 +14,6 @@ class Input extends Component {
     }
 
     onChanged(e, onChange) {
-        console.log("CHANGED");
         this.setState({touched: true});
         onChange(e);
     }

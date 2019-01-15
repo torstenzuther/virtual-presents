@@ -6,7 +6,6 @@ import * as styles from './../../assets/styles';
 import { getSeconds } from './../../utility/utility';
 import cssStyle  from './PresentInput.module.css';
 import Form from './../Form/Form';
-import { getError } from './../../utility/utility';
 
 class PresentInput extends Component {
 
@@ -76,18 +75,6 @@ class PresentInput extends Component {
         }
     }  
     
-    onValueChanged = (event) => {
-        const input = this.state.inputs[event.target.id];
-        const inputCopy = {...input};
-        inputCopy.value = event.target.value;
-        inputCopy.error =  getError(inputCopy.value, inputCopy.validation);
-        const inputsCopy = {...this.state.inputs};
-        inputsCopy[event.target.id] = inputCopy;
-        this.setState( {
-            inputs: inputsCopy
-        });
-    }
-
     onSubmit = (event) => {
         event.preventDefault(); 
     }
@@ -110,8 +97,7 @@ class PresentInput extends Component {
         return (
         <div>
            <div className={cssStyle.PresentInputs}>
-                <Form inputs={this.state.inputs} onChange={this.onValueChanged}
-                onSubmit={this.onSubmit} submitCaption={"SUBMIT"}/>
+                <Form inputs={this.state.inputs} onSubmit={this.onSubmit} submitCaption={"SUBMIT"}/>
            </div>
             <ol>
                 <li><TimerMessage text={this.state.inputs.previewText.value} 

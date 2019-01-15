@@ -20,6 +20,10 @@ textarea.Valid, input.Valid, select.Valid  {
     background-color: #888;
 }
 
+.Input button:disabled {
+    background-color: #ddd;
+}
+
 .Input label {
     padding: 12px 12px 12px 0;
 }
