@@ -25,27 +25,29 @@ class Input extends Component {
         if (this.props.error) {
             inputStyle = styles.Invalid;
         }
-        
+
+        const {touched, ...otherProps} = this.props;
+
         switch (this.props.type) {
             case 'select':
-                input = <select {...this.props} className={inputStyle}>{this.props.options.map(option=> 
+                input = <select {...otherProps} className={inputStyle}>{this.props.options.map(option=> 
                     <option key={option.key} value={option.key}>{option.value}</option>)}</select>;
                 break;
             case 'textarea':
-                input = <textarea {...this.props}  className={inputStyle} onChange={e=>this.onChanged(e,this.props.onChange)}></textarea>;
+                input = <textarea {...otherProps}  className={inputStyle} onChange={e=>this.onChanged(e,this.props.onChange)}></textarea>;
                 break;
             case 'datetime':
-                input = <DateTimePicker {...this.props} className={inputStyle} onChange={(val) => this.onDateTimeValueChanged(this.props.onChange, val, this.props.id)}/>;
+                input = <DateTimePicker {...otherProps} className={inputStyle} onChange={(val) => this.onDateTimeValueChanged(this.props.onChange, val, this.props.id)}/>;
                 break;
             case 'button':
-                input = <button {...this.props}>{this.props.children}</button>;
+                input = <button {...otherProps}>{this.props.children}</button>;
                 break;
             case 'password':
             case 'email':
-                input = <input  {...this.props } className={inputStyle} type={this.props.type} onChange={e=>this.onChanged(e,this.props.onChange)} />;
+                input = <input  {...otherProps } className={inputStyle} type={this.props.type} onChange={e=>this.onChanged(e,this.props.onChange)} />;
                 break;
             default:
-                input = <input  {...this.props } className={inputStyle} type="text"onChange={e=>this.onChanged(e,this.props.onChange)}  />;
+                input = <input  {...otherProps } className={inputStyle} type="text"onChange={e=>this.onChanged(e,this.props.onChange)}  />;
                 break;
         }
 

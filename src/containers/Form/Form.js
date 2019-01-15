@@ -15,6 +15,7 @@ class Form extends Component {
         const input = this.state.inputs[event.target.id];
         const inputCopy = {...input};
         inputCopy.value = event.target.value;
+        inputCopy.touched = true;
         inputCopy.error =  getError(inputCopy.value, inputCopy.validation);
         const inputsCopy = {...this.state.inputs};
         inputsCopy[event.target.id] = inputCopy;
@@ -29,7 +30,7 @@ class Form extends Component {
 
         const anyRequiredTouched = Object.keys(this.state.inputs)
             .some(inputKey => this.state.inputs[inputKey].touched && 
-                this.state.inputs[inputKey].validation.required);
+                this.state.inputs[inputKey].validation && this.state.inputs[inputKey].validation.required);
 
         const submitDisabled = someHaveErrors || !anyRequiredTouched;
         console.log(someHaveErrors, anyRequiredTouched);
