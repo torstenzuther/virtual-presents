@@ -30,7 +30,6 @@ class Form extends Component {
         for (let key in this.state.inputs) { 
             result[key] =  this.state.inputs[key].value;
         }
-        console.log(result);
         this.props.onSubmit(result);
     }
 

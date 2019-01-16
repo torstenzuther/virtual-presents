@@ -27,7 +27,6 @@ class App extends Component  {
                 submitDisabled: true
             }
         });
-        console.log(this.state);
         api.signUpUser(authData)
             .then(response => {
                 this.setState({
@@ -42,7 +41,6 @@ class App extends Component  {
                 })
             })
             .catch(e => {
-                console.log(e.response);
                 let error = "Unspecified error";
                 if (e.response && e.response.data && e.response.data.error
                     && e.response.data.error.message) {
