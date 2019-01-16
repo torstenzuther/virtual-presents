@@ -40,6 +40,7 @@ class Input extends Component {
                 input = <DateTimePicker {...otherProps} className={inputStyle} onChange={(val) => this.onDateTimeValueChanged(this.props.onChange, val, this.props.id)}/>;
                 break;
             case 'button':
+            case 'submit':
                 input = <button {...otherProps}>{this.props.children}</button>;
                 break;
             case 'password':

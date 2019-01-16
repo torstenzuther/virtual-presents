@@ -23,24 +23,35 @@ class Form extends Component {
             inputs: inputsCopy
         });
     }
+
+    onSubmit = (event) => {
+        event.preventDefault();
+        const result = {};
+        for (let key in this.state.inputs) { 
+            result[key] =  this.state.inputs[key].value;
+        }
+        console.log(result);
+        this.props.onSubmit(result);
+    }
+
     render() {
 
         const someHaveErrors = Object.keys(this.state.inputs)
                 .some(inputKey => this.state.inputs[inputKey].error);
 
-        const anyRequiredTouched = Object.keys(this.state.inputs)
-            .some(inputKey => this.state.inputs[inputKey].touched && 
-                this.state.inputs[inputKey].validation && this.state.inputs[inputKey].validation.required);
+        const allRequiredTouched = Object.keys(this.state.inputs)
+            .filter(inputKey => this.state.inputs[inputKey].validation &&
+                this.state.inputs[inputKey].validation.required)
+            .every(inputKey => this.state.inputs[inputKey].touched);
 
-        const submitDisabled = someHaveErrors || !anyRequiredTouched;
-        console.log(someHaveErrors, anyRequiredTouched);
-        return (<form>
+        const submitDisabled = someHaveErrors || !allRequiredTouched;
+        
+        return (<form onSubmit={this.onSubmit}>
             {Object.keys(this.state.inputs).map(inputKey => 
             <Input id={inputKey} key={inputKey} onChange={this.onValueChanged} 
             value={this.state.inputs[inputKey].value} {...this.state.inputs[inputKey]} />)}
-            <Input type="button" disabled={submitDisabled}
-             onClick={this.props.onSubmit}>{this.props.submitCaption}</Input>
-            </form>);
+            <Input type="submit" disabled={this.props.submitDisabled || submitDisabled}>{this.props.submitCaption}</Input>
+        </form>);
     }
 };
 

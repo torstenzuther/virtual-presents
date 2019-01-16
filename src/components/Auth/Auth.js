@@ -2,7 +2,7 @@ import React from 'react';
 import Form from './../../containers/Form/Form';
 
 const inputs = {
-    username : {
+    email : {
         label: "Email",
         type: 'email',
         value: '',
@@ -16,13 +16,22 @@ const inputs = {
         type: 'password',
         value: '',
         validation: {
+            minLength: 6,
             required: true
         }
     }
 };
 
 const auth = (props) => {
-    return (<Form inputs={inputs} submitCaption={"SIGN IN"}/>);
+    const caption = props.signIn ? "SIGN IN" : "SIGN UP";
+    let error = null;
+    if (props.error) {
+        error = <div>{props.error}</div>;
+    }
+    return (<>{error}<Form inputs={inputs} 
+        submitCaption={caption} 
+        onSubmit={props.onSubmit} 
+        submitDisabled={props.submitDisabled}/></>);
 }
 
 export default auth;
