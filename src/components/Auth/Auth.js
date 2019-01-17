@@ -24,14 +24,10 @@ const inputs = {
 
 const auth = (props) => {
     const caption = props.signIn ? "SIGN IN" : "SIGN UP";
-    let error = null;
-    if (props.error) {
-        error = <div>{props.error}</div>;
-    }
-    return (<>{error}<Form inputs={inputs} 
+    return (<Form inputs={inputs} 
         submitCaption={caption} 
         onSubmit={props.onSubmit} 
-        submitDisabled={props.submitDisabled}/></>);
+        submitDisabled={props.submitDisabled}/>);
 }
 
 export default auth;

@@ -6,6 +6,7 @@ import PresentInput from '../PresentInput/PresentInput';
 import About from '../../components/About/About';
 import Auth from '../../components/Auth/Auth';
 import api from '../../api/api';
+import Error from './../../components/Error/Error'
 
 class App extends Component  {
 
@@ -18,6 +19,15 @@ class App extends Component  {
             error: null,
             submitDisabled: false
         }
+    }
+
+    errorModalClosed = () => {
+        this.setState({
+            auth: {
+                ...this.state.auth,
+                error: null
+            }
+        });
     }
 
     onAuthSubmit = (authData) => {
@@ -55,7 +65,7 @@ class App extends Component  {
                         userId: null,
                         email: null,
                         token: null,
-                        error: error,
+                        error: error, // todo error nicht als state sondern kurz als modal anzeigen
                         submitDisabled: false
                     }
                 })
@@ -68,17 +78,19 @@ class App extends Component  {
             signIn = false;
         }
 
+        const errorModal = <Error error={this.state.auth.error} 
+                show={this.state.auth.error} onClose={this.errorModalClosed}></Error>;
         return (
+            <>{errorModal}
             <Layout>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/create" component={PresentInput} />
                     <Route exact path="/about" component={About} />
-                    <Route exact path="/auth" render={()=>{ return <Auth onSubmit={this.onAuthSubmit} 
-                        error={this.state.auth.error} signIn={signIn} submitDisabled={this.state.auth.submitDisabled}/>}} />
+                    <Route exact path="/auth" render={()=>{ return <Auth onSubmit={this.onAuthSubmit} signIn={signIn} submitDisabled={this.state.auth.submitDisabled}/>}} />
                     <Redirect to="/" />
                 </Switch>
-            </Layout>);
+            </Layout></>);
     }
 }
 
