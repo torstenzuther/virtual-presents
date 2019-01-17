@@ -5,9 +5,31 @@ import PresentBox from './../../components/PresentBox/PresentBox';
 import * as styles from './../../assets/styles';
 import { getSeconds } from './../../utility/utility';
 import cssStyle  from './PresentInput.module.css';
+import { getError } from './../../utility/utility';
 import Form from './../Form/Form';
 
 class PresentInput extends Component {
+
+    onValueChanged = (event) => {
+        const input = this.state.inputs[event.target.id];
+        const inputCopy = {...input};
+        inputCopy.value = event.target.value;
+        inputCopy.touched = true;
+        inputCopy.error =  getError(inputCopy.value, inputCopy.validation);
+        const inputsCopy = {...this.state.inputs};
+        inputsCopy[event.target.id] = inputCopy;
+        this.setState( {
+            inputs: inputsCopy
+        });
+    }
+
+    onSubmit = () => {
+        const result = {};
+        for (let key in this.state.inputs) { 
+            result[key] = this.state.inputs[key].value;
+        }
+        this.props.onSubmit(result);
+    }
 
     constructor(props) {
         super(props);
@@ -97,7 +119,8 @@ class PresentInput extends Component {
         return (
         <div>
            <div className={cssStyle.PresentInputs}>
-                <Form inputs={this.state.inputs} onSubmit={this.onSubmit} submitCaption={"SUBMIT"}/>
+                <Form inputs={this.state.inputs} onSubmit={this.onSubmit} onValueChanged={this.onValueChanged}
+                submitCaption={"SUBMIT"}/>
            </div>
             <ol>
                 <li><TimerMessage text={this.state.inputs.previewText.value} 

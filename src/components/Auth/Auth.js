@@ -1,33 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Form from './../../containers/Form/Form';
+import { getError } from './../../utility/utility';
 
-const inputs = {
-    email : {
-        label: "Email",
-        type: 'email',
-        value: '',
-        validation: {
-            required: true,
-            email: true
+
+class Auth extends Component {
+
+    state = {
+        inputs: {
+            email : {
+                label: "Email",
+                type: 'email',
+                value: '',
+                validation: {
+                    required: true,
+                    email: true
+                }
+            }, 
+            password: {
+                label: "Password",
+                type: 'password',
+                value: '',
+                validation: {
+                    minLength: 6,
+                    required: true
+                }
+            }
         }
-    }, 
-    password: {
-        label: "Password",
-        type: 'password',
-        value: '',
-        validation: {
-            minLength: 6,
-            required: true
+    }
+
+    onValueChanged = (event) => {
+        const input = this.state.inputs[event.target.id];
+        const inputCopy = {...input};
+        inputCopy.value = event.target.value;
+        inputCopy.touched = true;
+        inputCopy.error =  getError(inputCopy.value, inputCopy.validation);
+        const inputsCopy = {...this.state.inputs};
+        inputsCopy[event.target.id] = inputCopy;
+        this.setState( {
+            inputs: inputsCopy
+        });
+    }
+
+    onSubmit = () => {
+        console.log(this.state.inputs);
+        const result = {};
+        for (let key in this.state.inputs) { 
+            result[key] =  this.state.inputs[key].value;
         }
+        console.log(this.state.inputs);
+        this.props.onSubmit(result);
+    }
+
+    render() {
+        const caption = this.props.signIn ? "SIGN IN" : "SIGN UP";
+        return (<Form inputs={this.state.inputs} 
+            submitCaption={caption} 
+            onSubmit={this.onSubmit} 
+            onValueChanged={this.onValueChanged}
+            submitDisabled={this.props.submitDisabled}/>);
     }
 };
 
-const auth = (props) => {
-    const caption = props.signIn ? "SIGN IN" : "SIGN UP";
-    return (<Form inputs={inputs} 
-        submitCaption={caption} 
-        onSubmit={props.onSubmit} 
-        submitDisabled={props.submitDisabled}/>);
-}
-
-export default auth;
+export default Auth;
