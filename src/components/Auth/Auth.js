@@ -1,64 +1,78 @@
 import React, { Component } from 'react';
 import Form from './../../containers/Form/Form';
-import { getError } from './../../utility/utility';
+import { connect } from 'react-redux'; 
+import * as actions from '../../store/auth/actions';
+import api from './../../api/api';
+import Error from './../Error/Error';
 
 
 class Auth extends Component {
 
-    state = {
-        inputs: {
-            email : {
-                label: "Email",
-                type: 'email',
-                value: '',
-                validation: {
-                    required: true,
-                    email: true
-                }
-            }, 
-            password: {
-                label: "Password",
-                type: 'password',
-                value: '',
-                validation: {
-                    minLength: 6,
-                    required: true
-                }
-            }
+    onAuthSubmit = () => {
+        this.props.onAuthSubmitInit();
+        const authData = {}
+        for (let key in this.props.inputs) { 
+            authData[key] =  this.props.inputs[key].value;
         }
+        api.signUpUser(authData)
+            .then(response => {
+                this.props.onAuthSubmitSuccess({
+                    userId: response.data.localId,
+                    token: response.data.idToken,
+                    email: response.data.email
+                });
+            })
+            .catch(e => {
+                let error = "Unspecified error";
+                if (e.response && e.response.data && e.response.data.error
+                    && e.response.data.error.message) {
+                    error = e.response.data.error.message;
+                }
+                if (api.errors[e.response.data.error.message]) {
+                    error = api.errors[e.response.data.error.message];
+                }
+                this.props.onAuthSubmitError(error);;
+            });
     }
 
     onValueChanged = (event) => {
-        const input = this.state.inputs[event.target.id];
-        const inputCopy = {...input};
-        inputCopy.value = event.target.value;
-        inputCopy.touched = true;
-        inputCopy.error =  getError(inputCopy.value, inputCopy.validation);
-        const inputsCopy = {...this.state.inputs};
-        inputsCopy[event.target.id] = inputCopy;
-        this.setState( {
-            inputs: inputsCopy
-        });
-    }
-
-    onSubmit = () => {
-        console.log(this.state.inputs);
-        const result = {};
-        for (let key in this.state.inputs) { 
-            result[key] =  this.state.inputs[key].value;
-        }
-        console.log(this.state.inputs);
-        this.props.onSubmit(result);
+        this.props.onValueChanged(event.target.id, event.target.value);
     }
 
     render() {
-        const caption = this.props.signIn ? "SIGN IN" : "SIGN UP";
-        return (<Form inputs={this.state.inputs} 
+        const errorModal = <Error error={this.props.error} 
+                show={this.props.error} onClose={this.props.onAuthClearError}></Error>;
+        let signIn = true;
+        if (!this.props.token) {
+            signIn = false;
+        }
+        const caption = signIn ? "SIGN IN" : "SIGN UP";
+        return (<>{errorModal}<Form inputs={this.props.inputs} 
             submitCaption={caption} 
-            onSubmit={this.onSubmit} 
+            onSubmit={this.onAuthSubmit} 
             onValueChanged={this.onValueChanged}
-            submitDisabled={this.props.submitDisabled}/>);
+            submitDisabled={this.props.submitDisabled}/></>);
     }
 };
 
-export default Auth;
+const mapStateToProps = state => {
+    return {
+        inputs: state.auth.inputs,
+        submitDisabled: state.auth.submitDisabled,
+        token: state.auth.token,
+        error: state.auth.error
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onValueChanged: (id, value) => dispatch(actions.authValueChanged(id, value)),
+        onSubmitClicked: () => dispatch(actions.authSubmitInit()),
+        onAuthSubmitInit: () => dispatch(actions.authSubmitInit()),
+        onAuthSubmitSuccess: (authData) => dispatch(actions.authSubmitSuccess(authData)),
+        onAuthSubmitError: (error) => dispatch(actions.authSubmitError(error)),
+        onAuthClearError: () => dispatch(actions.authClearError())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
