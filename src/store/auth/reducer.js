@@ -2,9 +2,9 @@ import * as actionTypes from './actionTypes';
 import { getError } from './../../utility/utility';
 
 const initialState = {
-    userId: null,
-    email: null,
-    token: null,
+    userId: localStorage.getItem("userId"),
+    email: localStorage.getItem("email"),
+    token: localStorage.getItem("token"),
     error: null,
     submitDisabled: false,
     inputs: {
@@ -72,6 +72,9 @@ const onAuthSubmitSuccess = (state, action) => {
     result.userId = action.payload.userId;
     result.email = action.payload.email;
     result.token = action.payload.token;
+    localStorage.setItem("userId", action.payload.userId);
+    localStorage.setItem("email", action.payload.email);
+    localStorage.setItem("token", action.payload.token);
     result.error = null;
     return result;
 };
@@ -82,6 +85,9 @@ const onAuthSubmitError = (state, action) => {
     result.userId = null;
     result.email = null;
     result.token = null;
+    localStorage.setItem("userId", null);
+    localStorage.setItem("email", null);
+    localStorage.setItem("token", null);
     result.error = action.error;
     return result;
 };
@@ -98,6 +104,9 @@ const onLogout = (state, action) => {
     result.email = null;
     result.token = null;
     result.error = null;
+    localStorage.setItem("userId", null);
+    localStorage.setItem("email", null);
+    localStorage.setItem("token", null);
     return result;
 };
 
