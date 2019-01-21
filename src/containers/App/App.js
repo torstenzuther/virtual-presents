@@ -9,17 +9,20 @@ import Auth from '../../components/Auth/Auth';
 class App extends Component  {
 
     render() {
+
         return (
             <Layout>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/create" component={PresentInput} />
                     <Route exact path="/about" component={About} />
-                    <Route exact path="/auth" component={Auth} />
+                    <Route exact path="/signup" render={()=><Auth signIn={false}/>} />
+                    <Route exact path="/signin" render={()=><Auth signIn={true} />} />
                     <Redirect to="/" />
                 </Switch>
             </Layout>);
     }
 }
+
 
 export default App;

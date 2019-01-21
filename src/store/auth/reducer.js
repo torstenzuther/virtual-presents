@@ -64,13 +64,6 @@ const onAuthSubmitInit = (state, action) => {
     result.submitDisabled = true;
     result.error = null;
     return result;
-    // onSubmit = () => {
-    //     const result = {};
-    //     for (let key in state.inputs) { 
-    //         result[key] =  this.state.inputs[key].value;
-    //     }
-    //     this.props.onSubmitClicked(result);
-    // }
 };
 
 const onAuthSubmitSuccess = (state, action) => {
@@ -99,6 +92,15 @@ const onAuthClearError = (state, action) => {
     return result;
 };
 
+const onLogout = (state, action) => {
+    const result = deepCopy(state);
+    result.userId = null;
+    result.email = null;
+    result.token = null;
+    result.error = null;
+    return result;
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_SUBMIT_INIT: return onAuthSubmitInit(state, action);
@@ -106,6 +108,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_SUBMIT_ERROR: return onAuthSubmitError(state, action);
         case actionTypes.AUTH_VALUE_CHANGED: return onAuthValueChanged(state, action);
         case actionTypes.AUTH_CLEAR_ERROR: return onAuthClearError(state, action);
+        case actionTypes.LOGOUT: return onLogout(state, action);
         default: return state;
     }
 };

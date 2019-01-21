@@ -35,3 +35,9 @@ export const authSubmitSuccess = (payload) => {
         payload: payload
     };
 };
+
+export const logout = () => {
+    return {
+        type: actionTypes.LOGOUT,
+    };
+};

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/auth/actions';
 import api from './../../api/api';
 import Error from './../Error/Error';
+import { Redirect, withRouter } from 'react-router-dom';
 
 
 class Auth extends Component {
@@ -14,7 +15,11 @@ class Auth extends Component {
         for (let key in this.props.inputs) { 
             authData[key] =  this.props.inputs[key].value;
         }
-        api.signUpUser(authData)
+        const signInOrUp = this.props.signIn 
+            ? api.signInUser(authData) 
+            : api.signUpUser(authData);
+            
+        signInOrUp
             .then(response => {
                 this.props.onAuthSubmitSuccess({
                     userId: response.data.localId,
@@ -40,13 +45,13 @@ class Auth extends Component {
     }
 
     render() {
+
+        if (this.props.signIn && this.props.token) {
+             return <Redirect to="/" />;
+        }
         const errorModal = <Error error={this.props.error} 
                 show={this.props.error} onClose={this.props.onAuthClearError}></Error>;
-        let signIn = true;
-        if (!this.props.token) {
-            signIn = false;
-        }
-        const caption = signIn ? "SIGN IN" : "SIGN UP";
+        const caption = this.props.signIn ? "SIGN IN" : "SIGN UP";
         return (<>{errorModal}<Form inputs={this.props.inputs} 
             submitCaption={caption} 
             onSubmit={this.onAuthSubmit} 
@@ -75,4 +80,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth));
