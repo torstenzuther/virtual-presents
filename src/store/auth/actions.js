@@ -10,9 +10,11 @@ export const authValueChanged = (id, value) => {
     };
 };
 
-export const authSubmitInit = () => {
+export const authSubmitInit = (authData, signIn) => {
     return {
-        type: actionTypes.AUTH_SUBMIT_INIT
+        type: actionTypes.AUTH_SUBMIT_INIT,
+        authData: authData,
+        signIn: signIn
     };
 };
 

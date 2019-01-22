@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Form from './../../containers/Form/Form';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/auth/actions';
-import api from './../../api/api';
 import Error from './../Error/Error';
 import { Redirect, withRouter } from 'react-router-dom';
 
@@ -10,34 +9,11 @@ import { Redirect, withRouter } from 'react-router-dom';
 class Auth extends Component {
 
     onAuthSubmit = () => {
-        this.props.onAuthSubmitInit();
         const authData = {}
         for (let key in this.props.inputs) { 
             authData[key] =  this.props.inputs[key].value;
         }
-        const signInOrUp = this.props.signIn 
-            ? api.signInUser(authData) 
-            : api.signUpUser(authData);
-            
-        signInOrUp
-            .then(response => {
-                this.props.onAuthSubmitSuccess({
-                    userId: response.data.localId,
-                    token: response.data.idToken,
-                    email: response.data.email
-                });
-            })
-            .catch(e => {
-                let error = "Unspecified error";
-                if (e.response && e.response.data && e.response.data.error
-                    && e.response.data.error.message) {
-                    error = e.response.data.error.message;
-                }
-                if (api.errors[e.response.data.error.message]) {
-                    error = api.errors[e.response.data.error.message];
-                }
-                this.props.onAuthSubmitError(error);;
-            });
+        this.props.onAuthSubmitInit(authData, this.props.signIn);
     }
 
     onValueChanged = (event) => {
@@ -73,9 +49,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onValueChanged: (id, value) => dispatch(actions.authValueChanged(id, value)),
         onSubmitClicked: () => dispatch(actions.authSubmitInit()),
-        onAuthSubmitInit: () => dispatch(actions.authSubmitInit()),
-        onAuthSubmitSuccess: (authData) => dispatch(actions.authSubmitSuccess(authData)),
-        onAuthSubmitError: (error) => dispatch(actions.authSubmitError(error)),
+        onAuthSubmitInit: (authData, signIn) => dispatch(actions.authSubmitInit(authData, signIn)),
         onAuthClearError: () => dispatch(actions.authClearError())
     };
 };

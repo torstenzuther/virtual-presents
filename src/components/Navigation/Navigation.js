@@ -7,8 +7,10 @@ import * as actions from './../../store/auth/actions';
 const navigation = (props) => {
     let signInOrLogout = (<NavLink exact activeClassName={styles.active} 
         to="/signin">Sign in</NavLink>);
+    let email = null;
     if (props.token) {
         signInOrLogout = (<Link to="/" onClick={props.onLogout}>Logout</Link>);
+        email = <li><span>Signed in as {props.email}</span></li>
     }
     return (
         <div className={styles.Navigation}>
@@ -18,6 +20,7 @@ const navigation = (props) => {
                 <li><NavLink exact activeClassName={styles.active} to="/about">About</NavLink></li>
                 <li><NavLink exact activeClassName={styles.active} to="/signup">Sign up</NavLink></li>
                 <li>{signInOrLogout}</li>
+                {email}
             </ul>
         </div>
     );
@@ -25,7 +28,8 @@ const navigation = (props) => {
 
 const mapStateToProps = state => {
     return {
-        token: state.auth.token
+        token: state.auth.token,
+        email: state.auth.email
     };
 };
 

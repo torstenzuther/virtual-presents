@@ -4,16 +4,30 @@ import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import presentInputReducer from './store/presentInput/reducer';
 import authReducer from './store/auth/reducer';
+import createSagaMiddleware from 'redux-saga';
+import authSaga from './store/auth/authSaga';
 
 
 const reducers = combineReducers({
     auth: authReducer,
     presentInput: presentInputReducer
 });
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    }) : compose;
+
+const sagaMiddleware = createSagaMiddleware();
+const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
+
+const store = createStore(reducers, enhancer);
+
+sagaMiddleware.run(authSaga);
 
 const app = (
     <Provider store={store}>

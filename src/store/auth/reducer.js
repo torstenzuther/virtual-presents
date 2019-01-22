@@ -82,12 +82,15 @@ const onAuthSubmitSuccess = (state, action) => {
 const onAuthSubmitError = (state, action) => {
     const result = deepCopy(state);
     result.submitDisabled = false;
-    result.userId = null;
-    result.email = null;
-    result.token = null;
-    localStorage.setItem("userId", null);
-    localStorage.setItem("email", null);
-    localStorage.setItem("token", null);
+    if (!result.userId) {
+        result.userId = null;
+        result.email = null;
+        result.token = null;
+        localStorage.setItem("userId", null);
+        localStorage.setItem("email", null);
+        localStorage.setItem("token", null);
+    }
+    
     result.error = action.error;
     return result;
 };
