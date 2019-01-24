@@ -5,6 +5,7 @@ import * as actionTypes from './actionTypes';
 const initialDueDate = new Date();
 
 const initialState = {
+    submitDisabled: false,
     seconds: getSeconds(initialDueDate),
     inputs: {
         previewText : {
@@ -111,9 +112,24 @@ const onPresentInputValueChanged = (state, action) => {
     return result;
 };
 
-const onPresentInputSubmitted = (state, action) => {
-    return state;
-}
+const onPresentInputSubmitInit = (state, action) => {
+    const result = deepCopy(state);
+    result.submitDisabled = true;
+    return result;
+};
+
+
+const onPresentInputSubmitError = (state, action) => {
+    const result = deepCopy(state);
+    result.submitDisabled = false;
+    return result;
+};
+
+const onPresentInputSubmitSuccess = (state, action) => {
+    const result = deepCopy(state);
+    result.submitDisabled = false;
+    return result;
+};
 
 const onPresentCounterIntervalElapsed = (state, action) => {
     const result = deepCopy(state);
@@ -127,8 +143,10 @@ const onPresentCounterIntervalElapsed = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.PRESENTINPUT_SUBMIT_ERROR: return onPresentInputSubmitError(state, action);
+        case actionTypes.PRESENTINPUT_SUBMIT_SUCCESS: return onPresentInputSubmitSuccess(state, action);
         case actionTypes.PRESENTINPUT_VALUE_CHANGED: return onPresentInputValueChanged(state, action);
-        case actionTypes.PRESENTINPUT_SUBMIT: return onPresentInputSubmitted(state, action);
+        case actionTypes.PRESENTINPUT_SUBMIT_INIT: return onPresentInputSubmitInit(state, action);
         case actionTypes.PRESENT_COUNTER_INTERVAL_ELAPSED: return onPresentCounterIntervalElapsed(state, action);
         default: return state;
     }

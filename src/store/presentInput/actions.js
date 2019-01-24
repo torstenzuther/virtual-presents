@@ -16,8 +16,21 @@ export const presentInputCounterIntervalElapsed = () => {
     };
 };
 
-export const presentInputSubmitted = () => {
+export const presentInputSubmitInit = (payload) => {
     return {
-        type: actionTypes.PRESENTINPUT_SUBMIT
+        type: actionTypes.PRESENTINPUT_SUBMIT_INIT,
+        payload: payload
+    };
+};
+
+export const presentInputSubmitSuccess = () => {
+    return {
+        type: actionTypes.PRESENTINPUT_SUBMIT_SUCCESS
+    };
+};
+
+export const presentInputSubmitError = () => {
+    return {
+        type: actionTypes.PRESENTINPUT_SUBMIT_ERROR
     };
 };

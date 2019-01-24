@@ -5,6 +5,7 @@ import Home from '../../components/Home/Home';
 import PresentInput from '../PresentInput/PresentInput';
 import About from '../../components/About/About';
 import Auth from '../../components/Auth/Auth';
+import Timer from '../../components/Timer/Timer';
 
 class App extends Component  {
 
@@ -15,6 +16,7 @@ class App extends Component  {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/create" component={PresentInput} />
+                    <Route exact path="/presents/:id" component={Timer} />
                     <Route exact path="/about" component={About} />
                     <Route exact path="/signup" render={()=><Auth signIn={false}/>} />
                     <Route exact path="/signin" render={()=><Auth signIn={true} />} />

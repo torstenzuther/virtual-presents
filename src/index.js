@@ -9,7 +9,7 @@ import presentInputReducer from './store/presentInput/reducer';
 import authReducer from './store/auth/reducer';
 import createSagaMiddleware from 'redux-saga';
 import authSaga from './store/auth/authSaga';
-
+import presentInputSaga from './store/presentInput/presentInputSaga';
 
 const reducers = combineReducers({
     auth: authReducer,
@@ -22,12 +22,14 @@ const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
     }) : compose;
 
-const sagaMiddleware = createSagaMiddleware();
-const enhancer = composeEnhancers(applyMiddleware(sagaMiddleware));
+const authSagaMiddleware = createSagaMiddleware();
+const presentInputSagaMiddleware = createSagaMiddleware();
+const enhancer = composeEnhancers(applyMiddleware(authSagaMiddleware, presentInputSagaMiddleware));
 
 const store = createStore(reducers, enhancer);
 
-sagaMiddleware.run(authSaga);
+authSagaMiddleware.run(authSaga);
+presentInputSagaMiddleware.run(presentInputSaga);
 
 const app = (
     <Provider store={store}>

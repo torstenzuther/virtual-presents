@@ -10,9 +10,12 @@ import * as actions from '../../store/presentInput/actions';
 
 class PresentInput extends Component {
 
-    onSubmit = (event) => {
-        event.preventDefault(); 
-        this.props.onSubmitClicked();
+    onSubmit = () => {
+        const present = {}
+        for (let key in this.props.inputs) { 
+            present[key] =  this.props.inputs[key].value;
+        }
+        this.props.onSubmitClicked(present);
     }
 
     componentDidMount() {
@@ -31,7 +34,7 @@ class PresentInput extends Component {
         return (
         <div>
            <div className={cssStyle.PresentInputs}>
-                <Form inputs={this.props.inputs} onSubmit={this.onSubmit} 
+                <Form inputs={this.props.inputs} onSubmit={this.onSubmit} submitDisabled={this.props.submitDisabled}
                     onValueChanged={event => this.props.onValueChanged(event.target.id, event.target.value)}
                 submitCaption={"SUBMIT"}/>
            </div>
@@ -51,15 +54,16 @@ class PresentInput extends Component {
 const mapStateToProps = state => {
     return {
         inputs: state.presentInput.inputs,
-        seconds: state.presentInput.seconds
+        seconds: state.presentInput.seconds,
+        submitDisabled: state.presentInput.submitDisabled
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onValueChanged: (id, value) => dispatch(actions.presentInputValueChanged(id, value)),
-        onSubmitClicked: () => dispatch(actions.presentInputSubmitted()),
-        intervalElapsed: (value) => dispatch(actions.presentInputCounterIntervalElapsed()),
+        onSubmitClicked: (payload) => dispatch(actions.presentInputSubmitInit(payload)),
+        intervalElapsed: () => dispatch(actions.presentInputCounterIntervalElapsed()),
     };
 };
 

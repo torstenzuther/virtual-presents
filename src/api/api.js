@@ -9,32 +9,48 @@ const errors = {
     "EMAIL_EXISTS": "The email address is already in use",
     "OPERATION_NOT_ALLOWED": "Password sign in has been disabeld",
     "TOO_MANY_ATTEMPTS_TRY_LATER": "Too many failed attempts. Please try again later"
-}
+};
 
-const instance = axios.create({
-    baseURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/',
+const presentEndpoint = axios.create({
+    baseURL: 'https://virtual-presents.firebaseio.com/',
     timeout: 1000,
+    withCredentials: false,
+    headers: {
+        'Access-Control-Allow-Origin': '*'
+    }
+});
+
+const authEndpoint = axios.create({
+    baseURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/',
+    timeout: 1000
   });
 
 const signUpUser = (emailPassword) => {
-    return instance.post(`signupNewUser?key=${apiKey}`, {
+    return authEndpoint.post(`signupNewUser?key=${apiKey}`, {
         email: emailPassword.email,
         password: emailPassword.password,
         returnSecureToken: true
     });
-}
+};
 
 const signInUser = (emailPassword) => {
-    return instance.post(`verifyPassword?key=${apiKey}`, {
+    return authEndpoint.post(`verifyPassword?key=${apiKey}`, {
         email: emailPassword.email,
         password: emailPassword.password,
         returnSecureToken: true
     });
-}
+};
+
+const createPresent = (present) => {
+    return presentEndpoint.post('presents.json', {
+        present: present
+    });
+};
 
 const api = {
     signInUser: signInUser,
     signUpUser: signUpUser,
+    createPresent: createPresent,
     errors: errors
 }
 
