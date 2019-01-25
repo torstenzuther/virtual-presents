@@ -63,7 +63,7 @@ const initialState = {
                 }
             }),
             value: "defaultStyle"
-        }
+        },
     }
 };
 

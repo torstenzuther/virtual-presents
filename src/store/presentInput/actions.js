@@ -29,8 +29,9 @@ export const presentInputSubmitSuccess = () => {
     };
 };
 
-export const presentInputSubmitError = () => {
+export const presentInputSubmitError = (error) => {
     return {
-        type: actionTypes.PRESENTINPUT_SUBMIT_ERROR
+        type: actionTypes.PRESENTINPUT_SUBMIT_ERROR,
+        error: error
     };
 };
