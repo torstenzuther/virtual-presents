@@ -4,6 +4,8 @@ import * as actionTypes from './actionTypes';
 
 const initialDueDate = new Date();
 
+const getMinDate = () => new Date(new Date().getTime() + 60000);
+
 const initialState = {
     submitDisabled: false,
     seconds: getSeconds(initialDueDate),
@@ -24,6 +26,9 @@ const initialState = {
             label: "Due date",
             type: 'datetime',
             clearIcon: null,
+            validation: {
+                minValue: getMinDate()
+            },
             value: initialDueDate
         },
         presentTextBox:
@@ -80,6 +85,9 @@ const deepCopy = state => {
             },
             dueDate: {
                 ...state.inputs.dueDate,
+                validation: {
+                    ...state.inputs.dueDate.validation
+                }
             },
             presentTextBox: {
                 ...state.inputs.presentTextBox,
@@ -137,6 +145,9 @@ const onPresentCounterIntervalElapsed = (state, action) => {
     if (seconds >= 0) {
         result.seconds = seconds;
     }
+    result.inputs.dueDate.validation.minValue = getMinDate();
+    result.inputs.dueDate.error = getError(result.inputs.dueDate.value,
+        result.inputs.dueDate.validation);
     return result;
 }
 

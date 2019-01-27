@@ -41,5 +41,11 @@ export const getError = (value, validation) => {
         }
     }
 
+    if (validation.minValue) {
+        if (value < validation.minValue) {
+            return "Must be greater or equal than " + validation.minValue;
+        }
+    }
+
     return null;
 };

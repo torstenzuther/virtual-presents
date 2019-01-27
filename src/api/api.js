@@ -42,11 +42,15 @@ const signInUser = (emailPassword) => {
 };
 
 const createPresent = (present, auth) => {
-    present.createdAt = {
+    const presentTransformed = {
+        ...present
+    };
+    presentTransformed.createdAt = {
         ".sv": "timestamp"
     };
-    present.userId = auth.userId;
-    return presentEndpoint.post('present.json?auth=' + auth.token, present);
+    presentTransformed.userId = auth.userId;
+    presentTransformed.dueDate = presentTransformed.dueDate.getTime();
+    return presentEndpoint.post('present.json?auth=' + auth.token, presentTransformed);
 };
 
 const api = {

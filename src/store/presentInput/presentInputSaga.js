@@ -7,7 +7,7 @@ function* presentInputSubmitInit(action) {
 
     try {
         const state = yield select();
-        const response = yield call(api.createPresent,action.payload, state.auth);
+        const response = yield call(api.createPresent, action.payload, state.auth);
         yield put(actions.presentInputSubmitSuccess());
         yield console.log(response);
     } catch (e) {
@@ -25,8 +25,13 @@ function* presentInputSubmitInit(action) {
     }
 }
 
+function* presentCounterIntervalElapsed(action) {
+    
+}
+
 function* presentInputSaga() {
     yield takeEvery(actionTypes.PRESENTINPUT_SUBMIT_INIT, presentInputSubmitInit);
+    yield takeEvery(actionTypes.PRESENT_COUNTER_INTERVAL_ELAPSED, presentCounterIntervalElapsed);
 }
 
 export default presentInputSaga;
