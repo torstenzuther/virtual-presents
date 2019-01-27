@@ -35,3 +35,9 @@ export const presentInputSubmitError = (error) => {
         error: error
     };
 };
+
+export const presentInputClearError = () => {
+    return {
+        type: actionTypes.PRESENTINPUT_CLEAR_ERROR,
+    };
+};

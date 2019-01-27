@@ -7,6 +7,7 @@ import cssStyle  from './PresentInput.module.css';
 import Form from './../Form/Form';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/presentInput/actions';
+import Error from './../../components/Error/Error';
 
 class PresentInput extends Component {
 
@@ -30,9 +31,14 @@ class PresentInput extends Component {
     }
 
     render() {
+
+        const errorModal = <Error error={this.props.error} 
+                show={this.props.error} onClose={this.props.onPresentInputClearError}></Error>;
+
         const selectedStyle = styles[this.props.inputs.style.value];
         return (
         <div>
+            {errorModal}
            <div className={cssStyle.PresentInputs}>
                 <Form inputs={this.props.inputs} onSubmit={this.onSubmit} submitDisabled={this.props.submitDisabled}
                     onValueChanged={event => this.props.onValueChanged(event.target.id, event.target.value)}
@@ -55,7 +61,8 @@ const mapStateToProps = state => {
     return {
         inputs: state.presentInput.inputs,
         seconds: state.presentInput.seconds,
-        submitDisabled: state.presentInput.submitDisabled
+        submitDisabled: state.presentInput.submitDisabled,
+        error: state.presentInput.error
     };
 };
 
@@ -64,6 +71,7 @@ const mapDispatchToProps = dispatch => {
         onValueChanged: (id, value) => dispatch(actions.presentInputValueChanged(id, value)),
         onSubmitClicked: (payload) => dispatch(actions.presentInputSubmitInit(payload)),
         intervalElapsed: () => dispatch(actions.presentInputCounterIntervalElapsed()),
+        onPresentInputClearError: () => dispatch(actions.presentInputClearError())
     };
 };
 

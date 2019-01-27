@@ -17,15 +17,8 @@ function* authSubmitInit(action) {
             email: response.data.email
         }));
     } catch (e) {
-        let error = yield "Unspecified error";
-        if (e.response && e.response.data && e.response.data.error
-            && e.response.data.error.message) {
-            error = yield e.response.data.error.message;
-        }
-        if (api.errors[error]) {
-            error = yield api.errors[error];
-        }
         yield authLogout();
+        const error = yield api.getError(e);
         yield put(actions.authSubmitError(error));
     }
             

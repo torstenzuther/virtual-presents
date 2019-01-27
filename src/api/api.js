@@ -53,11 +53,23 @@ const createPresent = (present, auth) => {
     return presentEndpoint.post('present.json?auth=' + auth.token, presentTransformed);
 };
 
+const getError = (e) => {
+    let error = "Unspecified error";
+    if (e.response && e.response.data && e.response.data.error
+        && e.response.data.error.message) {
+        error = e.response.data.error.message;
+    }
+    if (errors[error]) {
+        error = errors[error];
+    }
+    return error;
+}
+
 const api = {
     signInUser: signInUser,
     signUpUser: signUpUser,
     createPresent: createPresent,
-    errors: errors
+    getError: getError
 }
 
 export default api;
