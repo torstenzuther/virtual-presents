@@ -41,15 +41,31 @@ const signInUser = (emailPassword) => {
     });
 };
 
+
+const getPresentPreview = (id) => {
+    return presentEndpoint.get(`present/${id}/preview.json`);
+};
+
+const getPresentSecret = (id) => {
+    return presentEndpoint.get(`present/${id}/secret.json`);
+};
+
 const createPresent = (present, auth) => {
     const presentTransformed = {
-        ...present
+        preview: {
+            previewText: present.previewText,
+            dueDate: present.dueDate.getTime(),
+            style: present.style,
+        },
+        secret: {
+            presentTextBox: present.presentTextBox,
+            presentText: present.presentText
+        }
     };
     presentTransformed.createdAt = {
         ".sv": "timestamp"
     };
     presentTransformed.userId = auth.userId;
-    presentTransformed.dueDate = presentTransformed.dueDate.getTime();
     return presentEndpoint.post('present.json?auth=' + auth.token, presentTransformed);
 };
 
@@ -69,6 +85,8 @@ const api = {
     signInUser: signInUser,
     signUpUser: signUpUser,
     createPresent: createPresent,
+    getPresentPreview: getPresentPreview,
+    getPresentSecret: getPresentSecret,
     getError: getError
 }
 
