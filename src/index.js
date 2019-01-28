@@ -7,13 +7,16 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import presentInputReducer from './store/presentInput/reducer';
 import authReducer from './store/auth/reducer';
+import presentViewReducer from './store/presentView/reducer';
 import createSagaMiddleware from 'redux-saga';
 import authSaga from './store/auth/authSaga';
 import presentInputSaga from './store/presentInput/presentInputSaga';
+import presentViewSaga from './store/presentView/presentViewSaga';
 
 const reducers = combineReducers({
     auth: authReducer,
-    presentInput: presentInputReducer
+    presentInput: presentInputReducer,
+    presentView: presentViewReducer
 });
 
 const composeEnhancers =
@@ -24,12 +27,15 @@ const composeEnhancers =
 
 const authSagaMiddleware = createSagaMiddleware();
 const presentInputSagaMiddleware = createSagaMiddleware();
-const enhancer = composeEnhancers(applyMiddleware(authSagaMiddleware, presentInputSagaMiddleware));
+const presentViewSagaMiddleware = createSagaMiddleware();
+const enhancer = composeEnhancers(applyMiddleware(authSagaMiddleware, 
+    presentInputSagaMiddleware, presentViewSagaMiddleware));
 
 const store = createStore(reducers, enhancer);
 
 authSagaMiddleware.run(authSaga);
 presentInputSagaMiddleware.run(presentInputSaga);
+presentViewSagaMiddleware.run(presentViewSaga);
 
 const app = (
     <Provider store={store}>

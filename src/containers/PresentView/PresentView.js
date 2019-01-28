@@ -3,78 +3,47 @@ import TimerMessage from './../../components/TimerMessage/TimerMessage';
 import Present from './../../components/Present/Present';
 import PresentBox from './../../components/PresentBox/PresentBox';
 import * as styles from './../../assets/styles';
-import { getSeconds } from './../../utility/utility';
-import Error from './../../components/Error/Error';
-import api from '../../api/api';
+import { connect } from 'react-redux';
+import * as actions from './../../store/presentView/actions';
 
 class PresentView extends Component {
 
-    state = {
-        showBox: true,
-        seconds: null,
-        preview: null,
-        secret: null
-    }
-
-    updateSeconds = () => {
-
-        const seconds = getSeconds(new Date(this.state.preview.dueDate));
-        this.setState({seconds: seconds});
-        if (!this.state.secret)
-        {
-            api.getPresentSecret(this.props.match.params.id)
-                .then(response => {
-                    console.log(response);
-                    this.setState({secret: response.data});
-                })
-                .catch(e => {
-                    console.log(e);
-                });
-            window.clearInterval(this.updateSeconds);
-            
-        }
-    }
-
-    componentWillUnmount() {
-        window.clearInterval(this.updateSeconds);
-    }
-
     componentDidMount() {
-        api.getPresentPreview(this.props.match.params.id)
-            .then(response => {
-                this.setState({preview: response.data});
-                this.updateSeconds();
-                setInterval(() => {
-                    this.updateSeconds();
-                }, 1000);
-            });
+        this.props.init(this.props.match.params.id);
     }
     
-    presentBoxClickHandler = () => {
-        this.setState({showBox: false});
-    }
-
     render() {
-        if (!this.state.preview) {
+        if (!this.props.presentView.preview.style) {
             return "LOADING";
         }
-        const selectedStyle = styles[this.state.preview.style];
-        if (this.state.seconds <= 0 && this.state.secret) {
-            if (this.state.showBox) {
-                return <PresentBox clicked={this.presentBoxClickHandler}
-                text={this.state.secret.presentTextBox} img={selectedStyle.img} cssStyle={selectedStyle.style}  />;
+        console.log(this.props.presentView.preview);
+        const selectedStyle = styles[this.props.presentView.preview.style];
+        if (this.props.presentView.seconds <= 0 && this.props.presentView.secret) {
+            if (this.props.presentView.showBox) {
+                return <PresentBox clicked={this.props.showPresent}
+                text={this.props.presentView.secret.presentTextBox} img={selectedStyle.img} cssStyle={selectedStyle.style}  />;
             } else {
-                return <Present text={this.state.secret.presentText} 
+                return <Present text={this.props.presentView.secret.presentText} 
                 cssStyle={selectedStyle.style}/>;
             }
         }
-        return(<TimerMessage text={this.state.preview.previewText} 
+        return(<TimerMessage text={this.props.presentView.preview.previewText} 
             cssStyle={selectedStyle.style}
-            seconds={this.state.seconds}/>);
+            seconds={this.props.presentView.seconds}/>);
     }
 }
 
+const mapStateToProps = (state) => {
+    return { 
+        presentView: state.presentView
+    };
+};
 
-export default PresentView;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showPresent: () => dispatch(actions.showPresent()),
+        init: (id) => dispatch(actions.presentViewInit(id)) 
+    };
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(PresentView);
+export default connect(mapStateToProps, mapDispatchToProps)(PresentView);
