@@ -41,7 +41,7 @@ class PresentInput extends Component {
             {errorModal}
            <div className={cssStyle.PresentInputs}>
                 <Form inputs={this.props.inputs} onSubmit={this.onSubmit} submitDisabled={this.props.submitDisabled}
-                    onValueChanged={event => this.props.onValueChanged(event.target.id, event.target.value)}
+                    onValueChanged={(event,id) => {this.props.onValueChanged(id, event.target.value)}}
                 submitCaption={"SUBMIT"}/>
            </div>
             <ol>

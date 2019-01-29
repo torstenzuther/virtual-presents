@@ -24,10 +24,6 @@ textarea.Valid, input.Valid, select.Valid  {
     background-color: #ddd;
 }
 
-.Input label {
-    padding: 12px 12px 12px 0;
-}
-
 textarea, input, select {
     width: 100%;
     padding: 12px;

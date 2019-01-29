@@ -1,4 +1,3 @@
-import { getSeconds, getError } from '../../utility/utility';
 import * as actionTypes from './actionTypes';
 
 const initialState = {

@@ -16,6 +16,8 @@ const initialState = {
             type: 'textarea',
             rows: 5,
             cols: 60,
+            rowsMax: 5,
+            multiline: true,
             validation: {
                 minLength: 1,
                 maxLength: 300,
@@ -38,6 +40,8 @@ const initialState = {
             type: 'textarea',
             rows: 5,
             cols: 60, 
+            rowsMax: 5,
+            multiline: true,
             validation: {
                 minLength: 1,
                 maxLength: 300,
@@ -50,6 +54,8 @@ const initialState = {
             label: "Present text",
             type: 'textarea',
             rows: 5,
+            rowsMax: 5,
+            multiline: true,
             cols: 60, 
             validation: {
                 minLength: 1,
@@ -116,8 +122,9 @@ const onPresentInputValueChanged = (state, action) => {
     const result = deepCopy(state);
     result.inputs[action.payload.id].value = action.payload.value;
     result.inputs[action.payload.id].touched = true;
-    result.inputs[action.payload.id].error = getError(result.inputs[action.payload.id].value, 
+    result.inputs[action.payload.id].errorMessage = getError(result.inputs[action.payload.id].value, 
         result.inputs[action.payload.id].validation);
+    result.inputs[action.payload.id].error = result.inputs[action.payload.id].errorMessage != null;
     return result;
 };
 
@@ -148,8 +155,9 @@ const onPresentCounterIntervalElapsed = (state, action) => {
         result.seconds = seconds;
     }
     result.inputs.dueDate.validation.minValue = getMinDate();
-    result.inputs.dueDate.error = getError(result.inputs.dueDate.value,
+    result.inputs.dueDate.errorMessage = getError(result.inputs.dueDate.value,
         result.inputs.dueDate.validation);
+    result.inputs.dueDate.error = result.inputs.dueDate.errorMessage != null;
     return result;
 }
 

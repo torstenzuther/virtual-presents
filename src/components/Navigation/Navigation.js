@@ -3,6 +3,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import { connect } from 'react-redux';
 import * as actions from './../../store/auth/actions';
+import AppBar from '@material-ui/core/AppBar';
 
 const navigation = (props) => {
     let signInOrLogout = (<NavLink exact activeClassName={styles.active} 
@@ -13,7 +14,7 @@ const navigation = (props) => {
         email = <li><span>Signed in as {props.email}</span></li>
     }
     return (
-        <div className={styles.Navigation}>
+        <AppBar position="static" className={styles.Navigation}>
             <ul>
                 <li><NavLink exact activeClassName={styles.active} to="/">Home</NavLink></li>
                 <li><NavLink exact activeClassName={styles.active} to="/create">Create present</NavLink></li>
@@ -22,7 +23,7 @@ const navigation = (props) => {
                 <li>{signInOrLogout}</li>
                 {email}
             </ul>
-        </div>
+        </AppBar>
     );
 };
 

@@ -51,8 +51,10 @@ const onAuthValueChanged = (state, action) => {
     const result = deepCopy(state);
     result.inputs[action.payload.id].value = action.payload.value;
     result.inputs[action.payload.id].touched = true;
-    result.inputs[action.payload.id].error = getError(result.inputs[action.payload.id].value, 
+    result.inputs[action.payload.id].errorMessage = getError(result.inputs[action.payload.id].value, 
         result.inputs[action.payload.id].validation);
+    result.inputs[action.payload.id].error = result.inputs[action.payload.id].errorMessage!== null;
+
     return result;
 };
 
