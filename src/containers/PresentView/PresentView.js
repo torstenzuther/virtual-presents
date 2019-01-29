@@ -13,8 +13,8 @@ class PresentView extends Component {
     }
     
     render() {
-        if (!this.props.presentView.preview ||
-             !this.props.presentView.seconds) {
+        if ((!this.props.presentView.preview ||
+             !this.props.presentView.seconds) && !this.props.presentView.secret) {
             return "LOADING";
         }
         console.log(this.props.presentView.seconds);
