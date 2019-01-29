@@ -4,19 +4,19 @@ import * as actionTypes from './actionTypes';
 const initialState = {
     showBox: true,
     seconds: null,
-    preview: {},
-    secret: {}
+    preview: null,
+    secret: null
 };
 
 const deepCopy = state => {
     return {
         ...state,
-        preview: {
+        preview: state.preview ? {
             ...state.preview
-        },
-        secret: {
+        } : null,
+        secret: state.secret ? {
             ...state.secret
-        }
+        } : null
     };
 };
 

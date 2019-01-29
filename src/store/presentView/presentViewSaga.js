@@ -9,38 +9,43 @@ function* presentViewInit(action) {
     try {
         const response = yield call(api.getPresentPreview, action.id);
         let seconds = yield getSeconds(response.data.dueDate);
-        console.log(seconds);
-        if (seconds <= 0) {
-            yield put(actions.presentPreviewInit(response.data));
-            try {
-                const response = yield call(api.getPresentSecret,action.id);
-                yield put(actions.presentSecretInit(response.data));
-            }
-            catch(e) {
-                console.log(e);
-            };
-        } else {
-            while (yield seconds > 0) {
-                yield delay(1000);
-                console.log(seconds);
-                seconds = seconds - 1;
-            }
-            try {
-                const response = yield call(api.getPresentSecret,action.id);
-                yield put(actions.presentSecretInit(response.data));
-            }
-            catch(e) {
-                console.log(e);
-            };
-        }
+        yield put(actions.presentPreviewInit(response.data));
+        yield elapseTimer(action.id, seconds, false);
     } catch (e) {
         console.log(e);
     }
 };
 
+function* getPresentSecret(id) {
+    try {
+        const response = yield call(api.getPresentSecret, id);
+        yield put(actions.presentSecretInit(response.data));
+    }
+    catch(e) {
+        console.log(e);
+    };
+}
+
+function* presentTimerIntervalElapsed(action) {
+    yield elapseTimer(action.id, action.seconds, true);
+}
+
+function* elapseTimer(id, seconds, del) {
+
+    if (seconds <= 0) {
+        yield getPresentSecret(id);
+    } else {
+        if (del) {
+            yield delay(1000);
+        }
+        yield put(actions.presentTimerIntervalElapsed(seconds - 1, id));
+    }
+
+}
 
 function* presentViewSaga() {
     yield takeEvery(actionTypes.PRESENT_VIEW_INIT, presentViewInit);
+    yield takeEvery(actionTypes.PRESENT_TIMER_INTERVAL_ELAPSED, presentTimerIntervalElapsed);
 }
 
 export default presentViewSaga;

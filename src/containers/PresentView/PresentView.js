@@ -13,12 +13,13 @@ class PresentView extends Component {
     }
     
     render() {
-        if (!this.props.presentView.preview.style) {
+        if (!this.props.presentView.preview ||
+             !this.props.presentView.seconds) {
             return "LOADING";
         }
-        console.log(this.props.presentView.preview);
+        console.log(this.props.presentView.seconds);
         const selectedStyle = styles[this.props.presentView.preview.style];
-        if (this.props.presentView.seconds <= 0 && this.props.presentView.secret) {
+        if (this.props.presentView.secret) {
             if (this.props.presentView.showBox) {
                 return <PresentBox clicked={this.props.showPresent}
                 text={this.props.presentView.secret.presentTextBox} img={selectedStyle.img} cssStyle={selectedStyle.style}  />;
