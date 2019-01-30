@@ -2,7 +2,7 @@ import { getSeconds, getError } from '../../utility/utility';
 import * as styles from '../../assets/styles';
 import * as actionTypes from './actionTypes';
 
-const initialDueDate = new Date();
+const initialDueDate = new Date(new Date().getTime() + 300000);
 
 const getMinDate = () => new Date(new Date().getTime() + 60000);
 
@@ -11,12 +11,32 @@ const initialState = {
     submitDisabled: false,
     seconds: getSeconds(initialDueDate),
     inputs: {
+        style:
+        {
+            label: "Style",
+            type: 'select',
+            options: Object.keys(styles).map(o => {
+                return {
+                    key: o,
+                    value: styles[o].name
+                }
+            }),
+            value: "defaultStyle"
+        },
+        dueDate : {
+            label: "Due date",
+            type: 'date',
+            clearIcon: null,
+            validation: {
+                minValue: getMinDate()
+            },
+            value: initialDueDate
+        },
         previewText : {
             label: "Invitation text",
             type: 'textarea',
-            rows: 5,
-            cols: 60,
             rowsMax: 5,
+            rows: 5,
             multiline: true,
             validation: {
                 minLength: 1,
@@ -24,15 +44,6 @@ const initialState = {
                 required: true
             },
             value: 'Hello, in <seconds> seconds your present will appear here!'
-        },
-        dueDate : {
-            label: "Due date",
-            type: 'datetime',
-            clearIcon: null,
-            validation: {
-                minValue: getMinDate()
-            },
-            value: initialDueDate
         },
         presentTextBox:
         {
@@ -63,19 +74,7 @@ const initialState = {
                 required: true
             },
             value: 'This is your personal present from us'
-        },
-        style:
-        {
-            label: "Style",
-            type: 'select',
-            options: Object.keys(styles).map(o => {
-                return {
-                    key: o,
-                    value: styles[o].name
-                }
-            }),
-            value: "defaultStyle"
-        },
+        }
     }
 };
 

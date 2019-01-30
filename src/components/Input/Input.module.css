@@ -1,39 +1,15 @@
-textarea:focus.Valid, input:focus.Valid, select:focus.Valid {
-    border: 3px solid;
+.Input {
+    margin: 5px;
 }
 
-textarea.Valid, input.Valid, select.Valid  {
-    border: 1px solid #ccc;
+.textarea {
+    width: 400px;
 }
 
-.Input button {
-    background-color: #555;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
+.textfield {
+    width: 400px;
 }
 
-.Input button:hover {
-    background-color: #888;
-}
-
-.Input button:disabled {
-    background-color: #ddd;
-}
-
-textarea, input, select {
-    width: 100%;
-    padding: 12px;
-    border-radius: 4px;
-    resize: vertical;
-}
-textarea.Invalid, input.Invalid , select.Invalid  {
-    border: 1px solid red;
-}
-
-textarea:focus.Invalid, input:focus.Invalid, select:focus.Invalid {
-    border: 3px solid red;
+.validation {
+    width: 200px;
 }

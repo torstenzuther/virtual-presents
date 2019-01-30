@@ -28,7 +28,7 @@ class Auth extends Component {
         const errorModal = <Error error={this.props.error} 
                 show={this.props.error} onClose={this.props.onAuthClearError}></Error>;
         const caption = this.props.signIn ? "SIGN IN" : "SIGN UP";
-        return (<>{errorModal}<Form inputs={this.props.inputs} 
+        return (<>{errorModal}<Form col={true} inputs={this.props.inputs} 
             submitCaption={caption} 
             onSubmit={this.onAuthSubmit} 
             onValueChanged={this.onValueChanged}

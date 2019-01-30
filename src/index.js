@@ -12,6 +12,8 @@ import createSagaMiddleware from 'redux-saga';
 import authSaga from './store/auth/authSaga';
 import presentInputSaga from './store/presentInput/presentInputSaga';
 import presentViewSaga from './store/presentView/presentViewSaga';
+import './index.css';
+import 'typeface-roboto';
 
 const reducers = combineReducers({
     auth: authReducer,

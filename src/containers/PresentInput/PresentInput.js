@@ -8,6 +8,7 @@ import Form from './../Form/Form';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/presentInput/actions';
 import Error from './../../components/Error/Error';
+import Divider from '@material-ui/core/Divider';
 
 class PresentInput extends Component {
 
@@ -44,6 +45,8 @@ class PresentInput extends Component {
                     onValueChanged={(event,id) => {this.props.onValueChanged(id, event.target.value)}}
                 submitCaption={"SUBMIT"}/>
            </div>
+
+            <Divider variant="middle" />
             <ol>
                 <li><TimerMessage text={this.props.inputs.previewText.value} 
                     cssStyle={selectedStyle.style}

@@ -1,5 +1,7 @@
 import React from 'react'
 import Input from './../../components/Input/Input';
+import styles from './Form.module.css';
+import { Divider } from '@material-ui/core';
 
 const form = props => {
 
@@ -12,8 +14,8 @@ const form = props => {
         .every(inputKey => props.inputs[inputKey].touched);
 
     const submitDisabled = someHaveErrors || !allRequiredTouched;
-    
-    return (<form onSubmit={(e)=>{e.preventDefault();props.onSubmit()}}>
+    const formClass = props.col ? styles.formCol : styles.formRow;
+    return (<form className={formClass} onSubmit={(e)=>{e.preventDefault();props.onSubmit()}}>
         {Object.keys(props.inputs).map(inputKey => 
         <Input id={inputKey} key={inputKey} onChange={props.onValueChanged} 
         value={props.inputs[inputKey].value} {...props.inputs[inputKey]} />)}

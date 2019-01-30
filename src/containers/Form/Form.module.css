@@ -1,0 +1,12 @@
+.formRow {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+}
+
+.formCol {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}

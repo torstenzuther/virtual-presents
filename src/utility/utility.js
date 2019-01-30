@@ -14,6 +14,13 @@ export const getSeconds = (dueDate) => {
     return seconds;
 }
 
+const format = (val) => {
+    if (val instanceof Date) {
+        return `${val.toLocaleDateString()} ${val.toLocaleTimeString()}`;
+    }
+    return val;
+}
+
 export const getError = (value, validation) => {
 
     if (!validation) {
@@ -35,7 +42,7 @@ export const getError = (value, validation) => {
     }
 
     if (validation.email) {
-        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (!re.test(String(value).toLowerCase())) {
             return "Invalid email";
         }
@@ -43,7 +50,8 @@ export const getError = (value, validation) => {
 
     if (validation.minValue) {
         if (value < validation.minValue) {
-            return "Must be greater or equal than " + validation.minValue;
+            const formattedValue = format(validation.minValue);
+            return `Must be greater or equal than ${formattedValue}`;
         }
     }
 
