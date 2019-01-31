@@ -8,7 +8,7 @@ import Form from './../Form/Form';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/presentInput/actions';
 import Error from './../../components/Error/Error';
-import Divider from '@material-ui/core/Divider';
+import ContentCard from './../../components/ContentCard/ContentCard';
 
 class PresentInput extends Component {
 
@@ -38,24 +38,30 @@ class PresentInput extends Component {
 
         const selectedStyle = styles[this.props.inputs.style.value];
         return (
-        <div>
+        <div className={`${cssStyle.flex} ${cssStyle.flexRow}`}>
             {errorModal}
-           <div className={cssStyle.PresentInputs}>
-                <Form inputs={this.props.inputs} onSubmit={this.onSubmit} submitDisabled={this.props.submitDisabled}
-                    onValueChanged={(event,id) => {this.props.onValueChanged(id, event.target.value)}}
-                submitCaption={"SUBMIT"}/>
+
+            <div className={cssStyle.inputCard}>
+                <ContentCard title="Create new grinch card">
+                    <Form inputs={this.props.inputs} onSubmit={this.onSubmit} submitDisabled={this.props.submitDisabled}
+                        onValueChanged={(event,id) => {this.props.onValueChanged(id, event.target.value)}}
+                    submitCaption={"SUBMIT"}/>
+                </ContentCard>
            </div>
 
-            <Divider variant="middle" />
-            <ol>
-                <li><TimerMessage text={this.props.inputs.previewText.value} 
-                    cssStyle={selectedStyle.style}
-                    seconds={this.props.seconds}/></li>
-                <li><PresentBox text={this.props.inputs.presentTextBox.value} 
-                    img={selectedStyle.img} cssStyle={selectedStyle.style} /></li>
-                <li><Present text={this.props.inputs.presentText.value} 
-                    cssStyle={selectedStyle.style}/></li>
-            </ol>
+           <div className={`${cssStyle.flex} ${cssStyle.flexCol} ${cssStyle.previewCards}`}>
+            <ContentCard title="Grinch card">
+                <TimerMessage text={this.props.inputs.previewText.value} 
+                        cssStyle={selectedStyle.style}
+                        seconds={this.props.seconds}/></ContentCard>
+            <ContentCard title="Present box">
+                <PresentBox text={this.props.inputs.presentTextBox.value} 
+                        img={selectedStyle.img} cssStyle={selectedStyle.style} /></ContentCard>
+            <ContentCard title="Present">
+                <Present text={this.props.inputs.presentText.value} 
+                        cssStyle={selectedStyle.style}/> 
+            </ContentCard>
+            </div>
         </div>);
     }
 }

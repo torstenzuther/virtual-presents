@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Typography, InputLabel } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import DateTimePicker from 'react-datetime-picker';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
@@ -24,7 +24,7 @@ const input = props => {
                 <MenuItem key={option.key} value={option.key}>{option.value}</MenuItem>)}</Select></>;
             break;
         case 'textarea':
-            input = <TextField variant="outlined" className={styles.textarea} {...otherProps} onChange={(e)=>props.onChange(e,props.id)}></TextField>;
+            input = <TextField fullWidth variant="outlined" {...otherProps} onChange={(e)=>props.onChange(e,props.id)}></TextField>;
             break;
         case 'date':
             input = 
@@ -37,7 +37,7 @@ const input = props => {
             break;
         case 'password':
         case 'email':
-            input = <TextField variant="outlined" className={styles.textfield} {...otherProps } type={props.type} onChange={(e)=>props.onChange(e,props.id)} />;
+            input = <TextField fullWidth variant="outlined" {...otherProps } type={props.type} onChange={(e)=>props.onChange(e,props.id)} />;
             break;
         default:
             input = null;
@@ -45,7 +45,7 @@ const input = props => {
     }
     return ( 
         <div className={styles.Input}>{input}
-            <Typography color="error" className={styles.validation}>{props.errorMessage}</Typography>
+            <Typography color="error">{props.errorMessage}</Typography>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import styles from './Navigation.module.css';
 import { connect } from 'react-redux';
 import * as actions from './../../store/auth/actions';
 import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { Badge } from '@material-ui/core';
 import ExitToApp from '@material-ui/icons/ExitToApp';
@@ -18,14 +19,14 @@ const navigation = (props) => {
     }
     return (
         <AppBar className={styles.Navigation}>
-            <ul>
-                <li><Button component={NavLink} exact activeClassName={styles.active} to="/">Home</Button></li>
-                <li><Button component={NavLink} exact activeClassName={styles.active} to="/create">Create present</Button></li>
-                <li><Button component={NavLink} exact activeClassName={styles.active} to="/about">About</Button></li>
-                <li><Button component={NavLink} exact activeClassName={styles.active} to="/signup">Sign up</Button></li>
-                <li>{signInOrLogout}</li>
+            <Toolbar>
+                <Button component={NavLink} exact activeClassName={styles.active} to="/">Home</Button>
+                <Button component={NavLink} exact activeClassName={styles.active} to="/create">Create present</Button>
+                <Button component={NavLink} exact activeClassName={styles.active} to="/about">About</Button>
+                <Button component={NavLink} exact activeClassName={styles.active} to="/signup">Sign up</Button>
+                {signInOrLogout}
                 {email}
-            </ul>
+            </Toolbar>
         </AppBar>
     );
 };

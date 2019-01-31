@@ -14,11 +14,12 @@ const form = props => {
         .every(inputKey => props.inputs[inputKey].touched);
 
     const submitDisabled = someHaveErrors || !allRequiredTouched;
-    const formClass = props.col ? styles.formCol : styles.formRow;
-    return (<form className={formClass} onSubmit={(e)=>{e.preventDefault();props.onSubmit()}}>
+    return (<form onSubmit={(e)=>{e.preventDefault();props.onSubmit()}}>
+        <div className={styles.form} >
         {Object.keys(props.inputs).map(inputKey => 
         <Input id={inputKey} key={inputKey} onChange={props.onValueChanged} 
         value={props.inputs[inputKey].value} {...props.inputs[inputKey]} />)}
+        </div>
         <Input type="submit" disabled={props.submitDisabled || submitDisabled}>{props.submitCaption}</Input>
     </form>);
 };

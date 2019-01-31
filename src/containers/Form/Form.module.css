@@ -1,11 +1,4 @@
-.formRow {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: center;
-}
-
-.formCol {
+.form {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
