@@ -129,7 +129,6 @@ const onPresentInputValueChanged = (state, action) => {
 
 const onPresentInputSubmitInit = (state, action) => {
     const result = deepCopy(state);
-    result.submitDisabled = true;
     return result;
 };
 
@@ -166,6 +165,12 @@ const onPresentInputClearError = (state, action) => {
     return result;
 }
 
+const onSubmitting = (state, action) => {
+    const result = deepCopy(state);
+    result.submitDisabled = true;
+    return result;
+}
+
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -175,6 +180,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.PRESENTINPUT_SUBMIT_INIT: return onPresentInputSubmitInit(state, action);
         case actionTypes.PRESENT_COUNTER_INTERVAL_ELAPSED: return onPresentCounterIntervalElapsed(state, action);
         case actionTypes.PRESENTINPUT_CLEAR_ERROR: return onPresentInputClearError(state, action);
+        case actionTypes.SUBMITTING: return onSubmitting(state, action);
         default: return state;
     }
 }

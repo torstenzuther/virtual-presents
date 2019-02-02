@@ -53,7 +53,8 @@ import img051 from './051.svg';
 export const defaultStyle = {
     name: 'Default',
     style: {
-        fontFamily: "Courier"
+        fontFamily: "Courier",
+        border: "3px solid"
     },
     img: img001
 };
@@ -62,7 +63,7 @@ export const romanticStyle = {
     name: 'Romantic',
     style: {
         fontFamily: "Times New Roman",
-        backgroundColor: '#ff0000'
+        backgroundColor: '#dfdfdf'
     },
     img: img002
 };

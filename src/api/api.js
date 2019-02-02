@@ -71,6 +71,9 @@ const createPresent = (present, auth) => {
 
 const getError = (e) => {
     let error = "Unspecified error";
+    if (e && e.message) {
+        error = e.message;
+    }
     if (e.response && e.response.data && e.response.data.error
         && e.response.data.error.message) {
         error = e.response.data.error.message;

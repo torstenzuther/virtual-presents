@@ -4,6 +4,7 @@ import { getError } from './../../utility/utility';
 const initialState = {
     error: null,
     submitDisabled: false,
+    redirectUrl: "/",
     inputs: {
         email : {
             label: "Email",
@@ -100,8 +101,15 @@ const onLogout = (state, action) => {
     result.email = null;
     result.token = null;
     result.error = null;
+    result.redirectUrl = "/";
     return result;
 };
+
+const onSetRedirect = (state, action) => {
+    const result = deepCopy(state);
+    result.redirectUrl = action.url;
+    return result;
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -111,6 +119,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_VALUE_CHANGED: return onAuthValueChanged(state, action);
         case actionTypes.AUTH_CLEAR_ERROR: return onAuthClearError(state, action);
         case actionTypes.LOGOUT: return onLogout(state, action);
+        case actionTypes.SET_REDIRECT: return onSetRedirect(state, action);
         default: return state;
     }
 };

@@ -3,7 +3,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-const error = props => {
+const message = props => {
     return (<Snackbar
         anchorOrigin={{
           vertical: 'bottom',
@@ -15,7 +15,7 @@ const error = props => {
         ContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">{props.error}</span>}
+        message={<span id="message-id">{props.message}</span>}
         action={[
           <IconButton
             key="close"
@@ -28,4 +28,4 @@ const error = props => {
     );
 };
 
-export default error;
+export default message;

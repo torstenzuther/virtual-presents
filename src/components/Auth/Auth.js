@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Form from './../../containers/Form/Form';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/auth/actions';
-import Error from './../Error/Error';
+import Message from './../Message/Message';
 import { Redirect, withRouter } from 'react-router-dom';
 
 
@@ -22,11 +22,12 @@ class Auth extends Component {
 
     render() {
 
-        if (this.props.signIn && this.props.token) {
-             return <Redirect to="/" />;
+        if (this.props.token && this.props.signIn) {
+            return <Redirect to={this.props.redirectUrl} />;
         }
-        const errorModal = <Error error={this.props.error} 
-                show={this.props.error} onClose={this.props.onAuthClearError}></Error>;
+        
+        const errorModal = <Message message={this.props.error} 
+                show={this.props.error !== null} onClose={this.props.onAuthClearError}></Message>;
         const caption = this.props.signIn ? "SIGN IN" : "SIGN UP";
         return (<>{errorModal}<Form col={true} inputs={this.props.inputs} 
             submitCaption={caption} 
@@ -41,7 +42,8 @@ const mapStateToProps = state => {
         inputs: state.auth.inputs,
         submitDisabled: state.auth.submitDisabled,
         token: state.auth.token,
-        error: state.auth.error
+        error: state.auth.error,
+        redirectUrl: state.auth.redirectUrl
     };
 };
 

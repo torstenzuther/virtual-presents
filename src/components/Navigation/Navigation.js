@@ -14,7 +14,7 @@ const navigation = (props) => {
         to="/signin">Sign in</Button>);
     let email = null;
     if (props.token) {
-        const logout = (<Button component={Link} to="/" onClick={props.onLogout}><ExitToApp /></Button>);
+        const logout = (<Button onClick={props.onLogout}><ExitToApp /></Button>);
         signInOrLogout = <Badge badgeContent={props.email}>{logout}</Badge>;
     }
     return (

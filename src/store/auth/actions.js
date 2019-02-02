@@ -43,3 +43,10 @@ export const logout = () => {
         type: actionTypes.LOGOUT,
     };
 };
+
+export const onSetRedirect = (url) => {
+    return {
+        type: actionTypes.SET_REDIRECT,
+        url: url
+    };
+};

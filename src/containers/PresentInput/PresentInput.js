@@ -7,7 +7,7 @@ import cssStyle  from './PresentInput.module.css';
 import Form from './../Form/Form';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/presentInput/actions';
-import Error from './../../components/Error/Error';
+import Message from '../../components/Message/Message';
 import ContentCard from './../../components/ContentCard/ContentCard';
 
 class PresentInput extends Component {
@@ -17,7 +17,7 @@ class PresentInput extends Component {
         for (let key in this.props.inputs) { 
             present[key] =  this.props.inputs[key].value;
         }
-        this.props.onSubmitClicked(present);
+        this.props.onSubmitClicked(present, this.props.auth, this.props.history);
     }
 
     componentDidMount() {
@@ -33,11 +33,12 @@ class PresentInput extends Component {
 
     render() {
 
-        const errorModal = <Error error={this.props.error} 
-                show={this.props.error} onClose={this.props.onPresentInputClearError}></Error>;
+        const errorModal = <Message message={this.props.error} 
+                show={this.props.error !== null} onClose={this.props.onPresentInputClearError}></Message>;
 
         const selectedStyle = styles[this.props.inputs.style.value];
         return (
+            
         <div className={`${cssStyle.flex} ${cssStyle.flexRow}`}>
             {errorModal}
 
@@ -71,14 +72,15 @@ const mapStateToProps = state => {
         inputs: state.presentInput.inputs,
         seconds: state.presentInput.seconds,
         submitDisabled: state.presentInput.submitDisabled,
-        error: state.presentInput.error
+        error: state.presentInput.error,
+        auth: state.auth
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onValueChanged: (id, value) => dispatch(actions.presentInputValueChanged(id, value)),
-        onSubmitClicked: (payload) => dispatch(actions.presentInputSubmitInit(payload)),
+        onSubmitClicked: (present, auth, history) => dispatch(actions.presentInputSubmitInit(present, auth, history)),
         intervalElapsed: () => dispatch(actions.presentInputCounterIntervalElapsed()),
         onPresentInputClearError: () => dispatch(actions.presentInputClearError())
     };

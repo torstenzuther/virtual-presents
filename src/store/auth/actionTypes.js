@@ -4,3 +4,4 @@ export const AUTH_SUBMIT_SUCCESS = 'AUTH_SUBMIT_SUCCESS';
 export const AUTH_SUBMIT_ERROR = 'AUTH_SUBMIT_ERROR';
 export const AUTH_CLEAR_ERROR = 'AUTH_CLEAR_ERROR';
 export const LOGOUT = 'LOGOUT';
+export const SET_REDIRECT = 'SET_REDIRECT';
