@@ -1,11 +1,12 @@
 import React from 'react';
+import PresentCard from './../PresentCard/PresentCard';
 
 const timerMessage = (props) => {
     const text = props.text.replace("<seconds>", props.seconds);
     return (
-    <div style={props.cssStyle}>
+    <PresentCard title={props.title}><div style={props.cssStyle}>
         <p>{text}</p>
-    </div>)
+    </div></PresentCard>)
   
 }
 

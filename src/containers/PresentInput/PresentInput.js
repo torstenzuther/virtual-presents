@@ -50,18 +50,14 @@ class PresentInput extends Component {
                 </ContentCard>
            </div>
 
-           <div className={`${cssStyle.flex} ${cssStyle.flexCol} ${cssStyle.previewCards}`}>
-            <ContentCard title="Grinch card">
-                <TimerMessage text={this.props.inputs.previewText.value} 
+           <div className={`${cssStyle.flex} ${cssStyle.flexCol}`}>
+                <TimerMessage title="Preview" text={this.props.inputs.previewText.value} 
                         cssStyle={selectedStyle.style}
-                        seconds={this.props.seconds}/></ContentCard>
-            <ContentCard title="Present box">
-                <PresentBox text={this.props.inputs.presentTextBox.value} 
-                        img={selectedStyle.img} cssStyle={selectedStyle.style} /></ContentCard>
-            <ContentCard title="Present">
-                <Present text={this.props.inputs.presentText.value} 
+                        seconds={this.props.seconds}/>
+                <PresentBox  title="Present box" text={this.props.inputs.presentTextBox.value} 
+                        img={selectedStyle.img} cssStyle={selectedStyle.style} />
+                <Present title="Present" text={this.props.inputs.presentText.value} 
                         cssStyle={selectedStyle.style}/> 
-            </ContentCard>
             </div>
         </div>);
     }

@@ -1,10 +1,11 @@
 import React from 'react';
+import PresentCard from './../PresentCard/PresentCard';
 
 const present = (props) => {
     return (
-    <div style={props.cssStyle}>
+    <PresentCard title={props.title}><div style={props.cssStyle}>
         <p>{props.text}</p>
-    </div>
+    </div></PresentCard>
 )};
 
 export default present;
