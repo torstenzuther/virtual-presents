@@ -3,9 +3,9 @@ import axios from 'axios';
 const apiKey = 'AIzaSyDcLVPNH3iMOv1WlxTph3oVGYoIDO0npzE';
 
 const errors = {
-    "EMAIL_NOT_FOUND": "No user with given email exists",
+    "EMAIL_NOT_FOUND": "User does not exist",
     "INVALID_PASSWORD": "Invalid password. Please try again",
-    "USER_DISABLED": "The use has been disabled",
+    "USER_DISABLED": "The user has been disabled",
     "EMAIL_EXISTS": "The email address is already in use",
     "OPERATION_NOT_ALLOWED": "Password sign in has been disabeld",
     "TOO_MANY_ATTEMPTS_TRY_LATER": "Too many failed attempts. Please try again later"

@@ -16,8 +16,6 @@ function* authSubmitInit(action) {
             token: response.data.idToken,
             email: response.data.email
         }));
-        yield put(actions.onSetRedirect("/"));
-        
     } catch (e) {
         yield authLogout();
         const error = yield api.getError(e);

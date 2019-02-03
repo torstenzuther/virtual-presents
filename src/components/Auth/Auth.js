@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/auth/actions';
 import Message from './../Message/Message';
 import { Redirect, withRouter } from 'react-router-dom';
-
+import ContentCard from './../ContentCard/ContentCard';
+import styles from './Auth.module.css';
 
 class Auth extends Component {
+
+    componentWillUnmount() {
+        this.props.onAuthSetRedirect();
+    }
 
     onAuthSubmit = () => {
         const authData = {}
@@ -29,11 +34,11 @@ class Auth extends Component {
         const errorModal = <Message message={this.props.error} 
                 show={this.props.error !== null} onClose={this.props.onAuthClearError}></Message>;
         const caption = this.props.signIn ? "SIGN IN" : "SIGN UP";
-        return (<>{errorModal}<Form col={true} inputs={this.props.inputs} 
+        return (<ContentCard title={caption} className={styles.card}>{errorModal}<Form col={true} inputs={this.props.inputs} 
             submitCaption={caption} 
             onSubmit={this.onAuthSubmit} 
             onValueChanged={this.onValueChanged}
-            submitDisabled={this.props.submitDisabled}/></>);
+            submitDisabled={this.props.submitDisabled}/></ContentCard>);
     }
 };
 
@@ -52,6 +57,7 @@ const mapDispatchToProps = dispatch => {
         onValueChanged: (id, value) => dispatch(actions.authValueChanged(id, value)),
         onSubmitClicked: () => dispatch(actions.authSubmitInit()),
         onAuthSubmitInit: (authData, signIn) => dispatch(actions.authSubmitInit(authData, signIn)),
+        onAuthSetRedirect: () => dispatch(actions.onSetRedirect('/')),
         onAuthClearError: () => dispatch(actions.authClearError())
     };
 };

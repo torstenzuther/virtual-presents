@@ -5,6 +5,7 @@ import PresentBox from './../../components/PresentBox/PresentBox';
 import * as styles from './../../assets/styles';
 import { connect } from 'react-redux';
 import * as actions from './../../store/presentView/actions';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class PresentView extends Component {
 
@@ -15,7 +16,7 @@ class PresentView extends Component {
     render() {
         if ((!this.props.presentView.preview ||
              !this.props.presentView.seconds) && !this.props.presentView.secret) {
-            return "LOADING";
+            return <CircularProgress />;
         }
         console.log(this.props.presentView.seconds);
         const selectedStyle = styles[this.props.presentView.preview.style];
