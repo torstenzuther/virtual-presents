@@ -4,7 +4,8 @@ const initialState = {
     showBox: true,
     seconds: null,
     preview: null,
-    secret: null
+    secret: null,
+    error: false
 };
 
 const deepCopy = state => {
@@ -48,12 +49,19 @@ const presentTimerIntervalElapsed = (state, action) => {
     return result;
 };
 
+const presentError = (state, action) => {
+    const result = deepCopy(state);
+    result.error = true;
+    return result;
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.PRESENT_PREVIEW_INIT: return presentPreviewInit(state, action);
         case actionTypes.PRESENT_SECRET_INIT: return presentSecretInit(state, action);
         case actionTypes.PRESENT_VIEW_INIT: return presentViewInit(state, action);
         case actionTypes.SHOW_PRESENT: return showPresent(state, action);
+        case actionTypes.PRESENT_ERROR: return presentError(state, action);
         case actionTypes.PRESENT_TIMER_INTERVAL_ELAPSED: return presentTimerIntervalElapsed(state, action);
         default: return state;
     }

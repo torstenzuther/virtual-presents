@@ -34,3 +34,10 @@ export const presentTimerIntervalElapsed = (seconds, id) => {
         id: id
     };
 };
+
+
+export const presentError = () => {
+    return {
+        type: actionTypes.PRESENT_ERROR,
+    };
+};

@@ -12,7 +12,7 @@ function* presentViewInit(action) {
         yield put(actions.presentPreviewInit(response.data));
         yield elapseTimer(action.id, seconds, false);
     } catch (e) {
-        console.log(e);
+        yield put(actions.presentError());
     }
 };
 
@@ -22,7 +22,7 @@ function* getPresentSecret(id) {
         yield put(actions.presentSecretInit(response.data));
     }
     catch(e) {
-        console.log(e);
+        yield put(actions.presentError());
     };
 }
 

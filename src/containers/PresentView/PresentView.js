@@ -6,6 +6,7 @@ import * as styles from './../../assets/styles';
 import { connect } from 'react-redux';
 import * as actions from './../../store/presentView/actions';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Redirect } from 'react-router-dom';
 
 class PresentView extends Component {
 
@@ -14,11 +15,13 @@ class PresentView extends Component {
     }
     
     render() {
+        if (this.props.presentView.error) {
+            return <Redirect to="/" />
+        }
         if ((!this.props.presentView.preview ||
              !this.props.presentView.seconds) && !this.props.presentView.secret) {
             return <CircularProgress />;
         }
-        console.log(this.props.presentView.seconds);
         const selectedStyle = styles[this.props.presentView.preview.style];
         if (this.props.presentView.secret) {
             if (this.props.presentView.showBox) {
@@ -37,7 +40,7 @@ class PresentView extends Component {
 
 const mapStateToProps = (state) => {
     return { 
-        presentView: state.presentView
+        presentView: state.presentView,
     };
 };
 
