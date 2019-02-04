@@ -1,12 +1,21 @@
-.Navigation ul {
-    list-style: none;
-}
-
-.Navigation li {
-    display: inline;
-    margin-left: 10px;
-}
-
 .Navigation .active {
     color: #dfdfdf;
+}
+
+.MobileNavMenuIcon {
+    display: none;
+}
+
+.DesktopMenuItem {
+    display: inline
+}
+
+@media (max-width: 425px)
+{
+    .MobileNavMenuIcon {
+        display: inline
+    }
+    .DesktopMenuItem {
+        display: none
+    }
 }
