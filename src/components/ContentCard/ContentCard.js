@@ -5,8 +5,16 @@ import CardContent from '@material-ui/core/CardContent';
 import styles from './ContentCard.module.css';
 
 const contentCard = props => {
+    let header = null;
+    if (props.title) {
+        header = (<CardHeader title={props.title} titleTypographyProps={
+            {style: {
+                textAlign: "center"
+            }}
+        } />);
+    }
     return (<Card raised className={styles.card} {...props}>
-        <CardHeader title={props.title} />
+        {header}
         <CardContent>{props.children}</CardContent>
         </Card>);
 };

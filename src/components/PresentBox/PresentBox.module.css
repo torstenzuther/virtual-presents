@@ -1,11 +1,15 @@
-.PresentBox {
-    width: 150px;
-    height: 150px;
-    display: inline-block;
+.PresentBox img {
+    padding-top: 10px;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    cursor: pointer;
 }
 
-.PresentBox img {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+.PresentBox h3 {
+    padding: 5px;
+    word-wrap: break-word;
+    text-align: center;
 }

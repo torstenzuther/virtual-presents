@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SideDrawer from './../SideDrawer/SideDrawer';
+import { Typography } from '@material-ui/core';
 
 class Navigation extends Component {
 
@@ -64,7 +65,7 @@ class Navigation extends Component {
                     <div className={styles.DesktopMenuItem}>
                         {desktopMenu}
                     </div>
-                    <div>{this.props.email}</div>
+                    <Typography className={styles.login}>{this.props.email}</Typography>
                 </Toolbar>
             </AppBar>
         );

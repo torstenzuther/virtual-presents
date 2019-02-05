@@ -1,4 +1,10 @@
 .card {
-    width: 600px;
+    width: 380px;
     margin: 10px;
+}
+
+.card p {
+    padding: 5px;
+    word-wrap: break-word;
+    text-align: center;
 }

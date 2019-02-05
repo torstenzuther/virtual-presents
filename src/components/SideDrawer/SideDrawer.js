@@ -5,6 +5,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { NavLink } from 'react-router-dom';
 
+const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
 const sideDrawer = (props) =>  {
 
     const sideList = (
@@ -24,7 +26,8 @@ const sideDrawer = (props) =>  {
     return (
         <SwipeableDrawer open={props.open}
           onClose={props.toggleOpen}
-          onOpen={props.toggleOpen}>
+          onOpen={props.toggleOpen}
+          disableBackdropTransition={!iOS} disableDiscovery={iOS}>
           <div
             tabIndex={0}
             role="button"
