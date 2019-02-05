@@ -7,6 +7,7 @@ const initialDueDate = new Date(new Date().getTime() + 300000);
 const getMinDate = () => new Date(new Date().getTime() + 60000);
 
 const initialState = {
+    createdPresentId: null,
     error: null,
     submitDisabled: false,
     seconds: getSeconds(initialDueDate),
@@ -132,7 +133,6 @@ const onPresentInputSubmitInit = (state, action) => {
     return result;
 };
 
-
 const onPresentInputSubmitError = (state, action) => {
     const result = deepCopy(state);
     result.submitDisabled = false;
@@ -171,6 +171,12 @@ const onSubmitting = (state, action) => {
     return result;
 }
 
+const onSetPresentCreated = (state, action) => {
+    const result = deepCopy(state);
+    result.createdPresentId = action.presentId;
+    return result;
+}
+
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -181,6 +187,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.PRESENT_COUNTER_INTERVAL_ELAPSED: return onPresentCounterIntervalElapsed(state, action);
         case actionTypes.PRESENTINPUT_CLEAR_ERROR: return onPresentInputClearError(state, action);
         case actionTypes.SUBMITTING: return onSubmitting(state, action);
+        case actionTypes.SET_PRESENT_CREATED: return onSetPresentCreated(state, action);
         default: return state;
     }
 }

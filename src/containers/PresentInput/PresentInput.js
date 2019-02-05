@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/presentInput/actions';
 import Message from '../../components/Message/Message';
 import ContentCard from './../../components/ContentCard/ContentCard';
+import QrCodeModal from '../../components/QrCodeModal/QrCodeModal';
 
 class PresentInput extends Component {
 
@@ -36,12 +37,16 @@ class PresentInput extends Component {
         const errorModal = <Message message={this.props.error} 
                 show={this.props.error !== null} onClose={this.props.onPresentInputClearError}></Message>;
 
+        let createdPresent = null;
+        if (this.props.createdPresentId) {
+            createdPresent = <QrCodeModal presentId={this.props.createdPresentId}></QrCodeModal>;
+        }
         const selectedStyle = styles[this.props.inputs.style.value];
         return (
             
         <div className={`${cssStyle.flex} ${cssStyle.flexRow}`}>
             {errorModal}
-
+            {createdPresent}
             <div className={cssStyle.inputCard}>
                 <ContentCard title="Create new grinch card">
                     <Form inputs={this.props.inputs} onSubmit={this.onSubmit} submitDisabled={this.props.submitDisabled}
@@ -69,7 +74,8 @@ const mapStateToProps = state => {
         seconds: state.presentInput.seconds,
         submitDisabled: state.presentInput.submitDisabled,
         error: state.presentInput.error,
-        auth: state.auth
+        auth: state.auth,
+        createdPresentId: state.presentInput.createdPresentId
     };
 };
 

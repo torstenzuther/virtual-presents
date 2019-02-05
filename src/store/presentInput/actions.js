@@ -25,9 +25,10 @@ export const presentInputSubmitInit = (present, auth, history) => {
     };
 };
 
-export const presentInputSubmitSuccess = () => {
+export const presentInputSubmitSuccess = (presentId) => {
     return {
-        type: actionTypes.PRESENTINPUT_SUBMIT_SUCCESS
+        type: actionTypes.PRESENTINPUT_SUBMIT_SUCCESS,
+        presentId: presentId
     };
 };
 
@@ -49,3 +50,11 @@ export const submitting = () => {
         type: actionTypes.SUBMITTING,
     };
 };
+
+export const setPresentCreated = (presentId) => {
+    return {
+        type: actionTypes.SET_PRESENT_CREATED,
+        presentId: presentId
+    };
+};
+

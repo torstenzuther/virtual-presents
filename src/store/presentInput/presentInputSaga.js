@@ -9,8 +9,8 @@ function* presentInputSubmitInit(action) {
     try {
         if (action.auth.token) {
             yield put(actions.submitting());
-            yield call(api.createPresent, action.present, action.auth);
-            yield put(actions.presentInputSubmitSuccess());
+            const response = yield call(api.createPresent, action.present, action.auth);
+            yield put(actions.presentInputSubmitSuccess(response.data.name));
         } else {
             yield put(authActions.onSetRedirect("/create"));
             yield action.history.replace("/signin");
@@ -21,8 +21,13 @@ function* presentInputSubmitInit(action) {
     }
 }
 
+function* presentInputSubmitSuccess(action) {
+    yield put(actions.setPresentCreated(action.presentId));
+}
+
 function* presentInputSaga() {
     yield takeEvery(actionTypes.PRESENTINPUT_SUBMIT_INIT, presentInputSubmitInit);
+    yield takeEvery(actionTypes.PRESENTINPUT_SUBMIT_SUCCESS, presentInputSubmitSuccess);
 }
 
 export default presentInputSaga;
