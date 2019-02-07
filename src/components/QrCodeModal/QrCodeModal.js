@@ -3,43 +3,45 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import QRCode from 'qrcode.react';
-import { Link } from 'react-router-dom';
+import IconButton from '@material-ui/core/IconButton';
+import FileCopy from '@material-ui/icons/FileCopyOutlined';
+import Input from './../Input/Input';
+import styles from './QrCodeModal.module.css';
 
 function Transition(props)  {
   return <Slide direction="up" {...props} />;
 }
 
 class QrCodeModal extends React.Component {
-  state = {
-    open: true,
-  };
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
 
   render() {
     const presentLink = `https://virtual-presents.firebaseapp.com/presents/${this.props.presentId}`;
     return (
-        <Dialog open={this.state.open} TransitionComponent={Transition} keepMounted 
-          onClose={this.handleClose}>
+        <Dialog open={this.props.open} TransitionComponent={Transition} keepMounted 
+          onClose={this.handleClose} 
+          maxWidth={"xs"}
+          fullWidth={true}>
           <DialogTitle>{"Your Grinch Card"}</DialogTitle>
           <DialogContent>
-            <DialogContentText><a href={presentLink}>{"Your Grinch Card"}</a>
-            </DialogContentText>
-            <QRCode value={presentLink} width={"350px"} height={"350px"} />
+            <div className={styles.linkBox}>
+            <div className={styles.input}>
+              <Input type="text" disabled value={presentLink}></Input>
+              <IconButton color="inherit">
+                <FileCopy />
+              </IconButton>
+              </div>
+            <QRCode value={presentLink} />
+            </div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.props.handleClose} color="primary">
               Close
+            </Button>
+            <Button onClick={this.props.handleClose} color="primary">
+              Print QR Code
             </Button>
           </DialogActions>
         </Dialog>

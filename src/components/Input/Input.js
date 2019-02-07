@@ -40,7 +40,7 @@ const input = props => {
             input = <TextField fullWidth variant="outlined" {...otherProps } type={props.type} onChange={(e)=>props.onChange(e,props.id)} />;
             break;
         default:
-            input = null;
+            input = <TextField fullWidth variant="outlined" {...otherProps } type={props.type} onChange={(e)=>props.onChange(e,props.id)} />;
             break;
     }
     return ( 

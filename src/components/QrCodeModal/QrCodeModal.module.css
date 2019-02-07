@@ -1,0 +1,14 @@
+.linkBox {
+    margin: auto;
+}
+
+.input {
+    flex: auto;
+    display: grid;
+    grid-template-columns: 90% auto;
+}
+
+canvas {
+    display: block;
+    margin: auto;
+}

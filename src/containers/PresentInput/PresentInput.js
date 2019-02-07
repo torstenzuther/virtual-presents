@@ -39,7 +39,9 @@ class PresentInput extends Component {
 
         let createdPresent = null;
         if (this.props.createdPresentId) {
-            createdPresent = <QrCodeModal presentId={this.props.createdPresentId}></QrCodeModal>;
+            createdPresent = <QrCodeModal open={true} 
+                presentId={this.props.createdPresentId}
+                handleClose={this.props.onQrModalClosed}></QrCodeModal>;
         }
         const selectedStyle = styles[this.props.inputs.style.value];
         return (
@@ -84,7 +86,8 @@ const mapDispatchToProps = dispatch => {
         onValueChanged: (id, value) => dispatch(actions.presentInputValueChanged(id, value)),
         onSubmitClicked: (present, auth, history) => dispatch(actions.presentInputSubmitInit(present, auth, history)),
         intervalElapsed: () => dispatch(actions.presentInputCounterIntervalElapsed()),
-        onPresentInputClearError: () => dispatch(actions.presentInputClearError())
+        onPresentInputClearError: () => dispatch(actions.presentInputClearError()),
+        onQrModalClosed: () => dispatch(actions.setPresentCreated(null))
     };
 };
 
