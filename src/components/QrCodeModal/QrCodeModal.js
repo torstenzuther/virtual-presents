@@ -5,11 +5,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
-import QRCode from 'qrcode.react';
 import IconButton from '@material-ui/core/IconButton';
 import FileCopy from '@material-ui/icons/FileCopyOutlined';
 import Input from './../Input/Input';
 import styles from './QrCodeModal.module.css';
+import QrCode from '../../components/QrCode/QrCode';
+import { withRouter } from 'react-router-dom';
 
 function Transition(props)  {
   return <Slide direction="up" {...props} />;
@@ -33,15 +34,16 @@ class QrCodeModal extends React.Component {
                 <FileCopy />
               </IconButton>
               </div>
-            <QRCode value={presentLink} />
+              <QrCode qrCode={presentLink} />
             </div>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.props.handleClose} color="primary">
               Close
             </Button>
-            <Button onClick={this.props.handleClose} color="primary">
-              Print QR Code
+            <Button  color="primary" onClick={()=> {
+              this.props.history.replace(`/qr/${encodeURIComponent(presentLink)}`)}}>
+              Open QR Code
             </Button>
           </DialogActions>
         </Dialog>
@@ -50,4 +52,4 @@ class QrCodeModal extends React.Component {
 }
 
 
-export default QrCodeModal;
+export default withRouter(QrCodeModal);

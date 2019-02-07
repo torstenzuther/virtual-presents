@@ -6,6 +6,7 @@ import PresentInput from '../PresentInput/PresentInput';
 import About from '../../components/About/About';
 import Auth from '../../components/Auth/Auth';
 import PresentView from '../../containers/PresentView/PresentView';
+import QrCodeModal from '../../components/QrCode/QrCode';
 
 class App extends Component  {
 
@@ -14,6 +15,7 @@ class App extends Component  {
         return (
             <Switch>
                 <Route exact path="/presents/:id" component={PresentView} />
+                <Route exact path="/qr/:id" component={QrCodeModal} />
                 <Layout>
                     <Switch>
                         <Route exact path="/" component={Home} />
