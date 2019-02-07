@@ -11,6 +11,7 @@ import Input from './../Input/Input';
 import styles from './QrCodeModal.module.css';
 import QrCode from '../../components/QrCode/QrCode';
 import { withRouter } from 'react-router-dom';
+import * as config from './../../utility/config';
 
 function Transition(props)  {
   return <Slide direction="up" {...props} />;
@@ -19,7 +20,7 @@ function Transition(props)  {
 class QrCodeModal extends React.Component {
 
   render() {
-    const presentLink = `https://virtual-presents.firebaseapp.com/presents/${this.props.presentId}`;
+    const presentLink = `${config.frontendUrl}presents/${this.props.presentId}`;
     return (
         <Dialog open={this.props.open} TransitionComponent={Transition} keepMounted 
           onClose={this.handleClose} 
@@ -30,7 +31,9 @@ class QrCodeModal extends React.Component {
             <div className={styles.linkBox}>
             <div className={styles.input}>
               <Input type="text" disabled value={presentLink}></Input>
-              <IconButton color="inherit">
+              <IconButton color="inherit" onClick={()=> {
+                navigator.clipboard.writeText(presentLink);
+              }}>
                 <FileCopy />
               </IconButton>
               </div>

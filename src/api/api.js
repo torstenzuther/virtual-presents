@@ -1,6 +1,6 @@
 import axios from 'axios';
+import * as config from './../utility/config';
 
-const apiKey = 'AIzaSyDcLVPNH3iMOv1WlxTph3oVGYoIDO0npzE';
 
 const errors = {
     "EMAIL_NOT_FOUND": "User does not exist",
@@ -12,7 +12,7 @@ const errors = {
 };
 
 const presentEndpoint = axios.create({
-    baseURL: 'https://virtual-presents.firebaseio.com/',
+    baseURL: config.backendUrl,
     timeout: 1000,
     withCredentials: false,
     headers: {
@@ -21,12 +21,12 @@ const presentEndpoint = axios.create({
 });
 
 const authEndpoint = axios.create({
-    baseURL: 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/',
+    baseURL: config.identityUrl,
     timeout: 1000
   });
 
 const signUpUser = (emailPassword) => {
-    return authEndpoint.post(`signupNewUser?key=${apiKey}`, {
+    return authEndpoint.post(`signupNewUser?key=${config.apiKey}`, {
         email: emailPassword.email,
         password: emailPassword.password,
         returnSecureToken: true
@@ -34,7 +34,7 @@ const signUpUser = (emailPassword) => {
 };
 
 const signInUser = (emailPassword) => {
-    return authEndpoint.post(`verifyPassword?key=${apiKey}`, {
+    return authEndpoint.post(`verifyPassword?key=${config.apiKey}`, {
         email: emailPassword.email,
         password: emailPassword.password,
         returnSecureToken: true
