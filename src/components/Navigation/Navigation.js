@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SideDrawer from './../SideDrawer/SideDrawer';
 import { Typography } from '@material-ui/core';
+import logo from './../../assets/logo_desktop.png';
 
 class Navigation extends Component {
 
@@ -62,10 +63,13 @@ class Navigation extends Component {
                             toggleOpen={this.onSideDrawerToggle} items={menuItems}>
                         </SideDrawer>
                     </div>
+                    <img src={logo} alt="" />
                     <div className={styles.DesktopMenuItem}>
                         {desktopMenu}
                     </div>
-                    <Typography className={styles.login}>{this.props.email}</Typography>
+                    <div className={styles.login}>
+                        <Typography>{this.props.email}</Typography>
+                    </div>
                 </Toolbar>
             </AppBar>
         );

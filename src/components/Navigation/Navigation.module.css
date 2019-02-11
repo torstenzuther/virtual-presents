@@ -7,15 +7,26 @@
 }
 
 .DesktopMenuItem {
-    display: inline
+    display: inline;
+    margin-left: 45px;
 }
 
-@media (max-width: 590px)
+img {
+    position: absolute;
+}
+
+@media (max-width: 645px)
 {
     .MobileNavMenuIcon {
         display: inline
     }
     .DesktopMenuItem {
-        display: none
+        display: none;
+    }
+    img {
+        left: 55px;
+    }
+    .login {
+        margin-left: 45px;
     }
 }
