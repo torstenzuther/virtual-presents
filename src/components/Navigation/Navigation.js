@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SideDrawer from './../SideDrawer/SideDrawer';
 import { Typography } from '@material-ui/core';
-import logo from './../../assets/logo_desktop.png';
+import logo from './../../assets/logo.png';
 
 class Navigation extends Component {
 
@@ -31,12 +31,11 @@ class Navigation extends Component {
 
         const menuItems = [
             { route: "/", name: "Home" },
-            { route: "/create", name: "Create present" },
-            { route: "/about", name: "About" },
-            { route: "/signup", name: "Sign up" },
+            { route: "/create", name: "Create Little Joy" },
         ];
 
         if (!this.props.token) {
+            menuItems.push({ route: "/signup", name: "Sign up" });
             menuItems.push({ route: "signin", name: "Sign in" });
         } else {
             menuItems.push({ name: "Logout", action: this.props.onLogout})
@@ -63,9 +62,10 @@ class Navigation extends Component {
                             toggleOpen={this.onSideDrawerToggle} items={menuItems}>
                         </SideDrawer>
                     </div>
-                    <img src={logo} alt="" />
                     <div className={styles.DesktopMenuItem}>
-                        {desktopMenu}
+                        <img src={logo} alt="" width="45px" height="45px" />
+                        <div className={styles.shifted}>
+                        {desktopMenu}</div>
                     </div>
                     <div className={styles.login}>
                         <Typography>{this.props.email}</Typography>

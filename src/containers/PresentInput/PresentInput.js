@@ -50,7 +50,7 @@ class PresentInput extends Component {
             {errorModal}
             {createdPresent}
             <div className={cssStyle.inputCard}>
-                <ContentCard title="Create new grinch card">
+                <ContentCard title="Create Little Joy">
                     <Form inputs={this.props.inputs} onSubmit={this.onSubmit} submitDisabled={this.props.submitDisabled}
                         onValueChanged={(event,id) => {this.props.onValueChanged(id, event.target.value)}}
                     submitCaption={"SUBMIT"}/>
@@ -61,9 +61,9 @@ class PresentInput extends Component {
                 <TimerMessage title="Preview" text={this.props.inputs.previewText.value} 
                         cssStyle={selectedStyle.style}
                         seconds={this.props.seconds}/>
-                <PresentBox  title="Present box" text={this.props.inputs.presentTextBox.value} 
+                <PresentBox  title="Box" text={this.props.inputs.presentTextBox.value} 
                         img={selectedStyle.img} cssStyle={selectedStyle.style} />
-                <Present title="Present" text={this.props.inputs.presentText.value} 
+                <Present title="Little Joy" text={this.props.inputs.presentText.value} 
                         cssStyle={selectedStyle.style}/> 
             </div>
         </div>);

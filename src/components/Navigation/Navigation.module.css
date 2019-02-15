@@ -7,26 +7,27 @@
 }
 
 .DesktopMenuItem {
-    display: inline;
+    display: inline-block;
+}
+
+.shifted {
     margin-left: 45px;
 }
 
-img {
+.DesktopMenuItem > img {
+    margin: 0;
     position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
-@media (max-width: 645px)
+@media (max-width: 599px)
 {
     .MobileNavMenuIcon {
-        display: inline
+        display: inline;
     }
     .DesktopMenuItem {
         display: none;
-    }
-    img {
-        left: 55px;
-    }
-    .login {
-        margin-left: 45px;
     }
 }

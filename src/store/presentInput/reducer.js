@@ -44,11 +44,11 @@ const initialState = {
                 maxLength: 300,
                 required: true
             },
-            value: 'Hello, in <seconds> seconds your present will appear here!'
+            value: '<seconds> seconds...'
         },
         presentTextBox:
         {
-            label: "Present text (box)",
+            label: "Box text",
             type: 'textarea',
             rows: 5,
             cols: 60, 
@@ -59,11 +59,11 @@ const initialState = {
                 maxLength: 300,
                 required: true
             },
-            value: 'Happy birtdhay!'
+            value: 'Happy Birthday!'
         },
         presentText:
         {
-            label: "Present text",
+            label: "Little Joy",
             type: 'textarea',
             rows: 5,
             rowsMax: 5,
@@ -74,7 +74,7 @@ const initialState = {
                 maxLength: 300,
                 required: true
             },
-            value: 'This is your personal present from us'
+            value: 'Happy Birthday!'
         }
     }
 };

@@ -26,7 +26,7 @@ class QrCodeModal extends React.Component {
           onClose={this.handleClose} 
           maxWidth={"xs"}
           fullWidth={true}>
-          <DialogTitle>{"Your Grinch Card"}</DialogTitle>
+          <DialogTitle>{"Your Little Joy"}</DialogTitle>
           <DialogContent>
             <div className={styles.linkBox}>
             <div className={styles.input}>
