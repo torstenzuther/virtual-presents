@@ -58,7 +58,7 @@ class PresentInput extends Component {
            </div>
 
            <div className={`${cssStyle.flex} ${cssStyle.flexCol}`}>
-                <TimerMessage title="Preview" text={this.props.inputs.previewText.value} 
+                <TimerMessage title="Invitation" text={this.props.inputs.previewText.value} 
                         cssStyle={selectedStyle.style}
                         seconds={this.props.seconds}/>
                 <PresentBox  title="Box" text={this.props.inputs.presentTextBox.value} 

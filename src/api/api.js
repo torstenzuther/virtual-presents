@@ -13,7 +13,7 @@ const errors = {
 
 const presentEndpoint = axios.create({
     baseURL: config.backendUrl,
-    timeout: 1000,
+    timeout: 3000,
     withCredentials: false,
     headers: {
         'Access-Control-Allow-Origin': '*'
@@ -22,7 +22,7 @@ const presentEndpoint = axios.create({
 
 const authEndpoint = axios.create({
     baseURL: config.identityUrl,
-    timeout: 1000
+    timeout: 3000
   });
 
 const signUpUser = (emailPassword) => {

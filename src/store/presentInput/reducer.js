@@ -34,7 +34,7 @@ const initialState = {
             value: initialDueDate
         },
         previewText : {
-            label: "Invitation text",
+            label: "Invitation",
             type: 'textarea',
             rowsMax: 5,
             rows: 5,
@@ -48,7 +48,7 @@ const initialState = {
         },
         presentTextBox:
         {
-            label: "Box text",
+            label: "Box",
             type: 'textarea',
             rows: 5,
             cols: 60, 
