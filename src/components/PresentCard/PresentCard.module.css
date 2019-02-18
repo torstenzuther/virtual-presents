@@ -1,6 +1,7 @@
 .card {
-    width: 380px;
+    max-width: 380px;
     margin: 10px;
+    min-width: 90%;
 }
 
 .card p {

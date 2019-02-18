@@ -50,20 +50,468 @@ import img049 from './049.svg';
 import img050 from './050.svg';
 import img051 from './051.svg';
 
-export const defaultStyle = {
-    name: 'Default',
+export const style01 = {
+    name: 'Nerd Bag',
     style: {
-        fontFamily: "Courier",
-        border: "3px solid"
+        fontFamily: "Courier New",
+        border: "dashed 3px",
+        background: "#11df11"
     },
     img: img001
 };
 
-export const romanticStyle = {
-    name: 'Romantic',
+export const style02 = {
+    name: "Orange 'n Blue ",
     style: {
         fontFamily: "Times New Roman",
-        backgroundColor: '#dfdfdf'
+        backgroundColor: "#4aaaff",
+        border: "ridge 10px #4a7aff",
+        borderRadius: "6px"
+
     },
     img: img002
+};
+
+export const style03 = {
+    name: 'Happy Flowers',
+    style: {
+        fontFamily: "Garamond",
+        backgroundColor: "#ff2222",
+        color: "white",
+        border: "dotted 6px #ffffff",
+    },
+    img: img003
+};
+
+export const style04 = {
+    name: 'Christmas present',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img004
+};
+
+export const style05 = {
+    name: 'Christmas present 2',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img005
+};
+
+export const style06 = {
+    name: 'Simple Red & Blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img006
+};
+
+
+export const style07 = {
+    name: 'Cute & red',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img007
+};
+
+export const style08 = {
+    name: 'Cute & red',
+    style: {
+        fontFamily: "Times New Roman",
+    },
+    img: img008
+};
+
+export const style09 = {
+    name: 'Small gift card',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img009
+};
+
+export const style10 = {
+    name: 'Big Orange',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img010
+};
+
+export const style11 = {
+    name: 'Blue gift card',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img011
+};
+
+
+export const style12 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img012
+};
+
+export const style13 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img013
+};
+
+export const style14 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img014
+};
+
+export const style15 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img015
+};
+
+export const style16 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img016
+};
+
+export const style17 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img017
+};
+
+export const style18 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img018
+};
+
+export const style19 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img019
+};
+
+export const style20 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img020
+};
+
+export const style21 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img021
+};
+
+export const style22 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img022
+};
+
+export const style23 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img023
+};
+
+export const style24 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img024
+};
+
+export const style25 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img025
+};
+
+export const style26 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img026
+};
+
+export const style27 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img027
+};
+
+export const style28 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img028
+};
+
+export const style29 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img029
+};
+
+export const style30 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img030
+};
+
+export const style31 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img031
+};
+
+export const style32 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img032
+};
+
+export const style33 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img033
+};
+
+export const style34 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img034
+};
+
+export const style35 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img035
+};
+
+export const style36 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img036
+};
+
+export const style37 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img037
+};
+
+export const style38 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img038
+};
+
+export const style39 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img039
+};
+
+export const style40 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img040
+};
+
+export const style41 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img041
+};
+
+export const style42 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img042
+};
+
+export const style43 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img043
+};
+
+export const style44 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img044
+};
+
+export const style45 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img045
+};
+
+export const style46 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img046
+};
+
+export const style47 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img047
+};
+
+export const style48 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img048
+};
+
+export const style49 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img049
+};
+
+export const style50 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img050
+};
+
+export const style51 = {
+    name: 'Small orange on blue',
+    style: {
+        fontFamily: "Times New Roman",
+
+    },
+    img: img051
 };

@@ -23,6 +23,11 @@ const input = props => {
             input = <><FormHelperText>{props.label}</FormHelperText><Select variant="outlined" {...otherProps} onChange={(e)=>props.onChange(e,props.id)}>{props.options.map(option=> 
                 <MenuItem key={option.key} value={option.key}>{option.value}</MenuItem>)}</Select></>;
             break;
+        case 'img-select':
+            input = <><FormHelperText>{props.label}</FormHelperText><Select variant="outlined" {...otherProps} onChange={(e)=>props.onChange(e,props.id)}>{props.options.map(option=> 
+                <MenuItem key={option.key} value={option.key}><span style={option.style} className={styles.ImageSelect}>
+                    <img alt="" src={option.img} width="30px" height="30px"/>{option.value}</span></MenuItem>)}</Select></>;
+            break;
         case 'textarea':
             input = <TextField fullWidth variant="outlined" {...otherProps} onChange={(e)=>props.onChange(e,props.id)}></TextField>;
             break;

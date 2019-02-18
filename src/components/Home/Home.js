@@ -1,7 +1,6 @@
 import React from 'react';
 import ContentCard from '../../components/ContentCard/ContentCard';
 import './Home.css';
-import { Divider } from '@material-ui/core';
 
 const home = (props) => {
     return <main><h1>Little Joy - personal heartfelt digital vouchers</h1>

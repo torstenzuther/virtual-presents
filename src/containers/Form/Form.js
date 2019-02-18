@@ -1,7 +1,6 @@
 import React from 'react'
 import Input from './../../components/Input/Input';
 import styles from './Form.module.css';
-import { Divider } from '@material-ui/core';
 
 const form = props => {
 

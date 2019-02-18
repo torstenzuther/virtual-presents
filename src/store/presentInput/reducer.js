@@ -15,14 +15,16 @@ const initialState = {
         style:
         {
             label: "Style",
-            type: 'select',
+            type: 'img-select',
             options: Object.keys(styles).map(o => {
                 return {
                     key: o,
-                    value: styles[o].name
+                    value: styles[o].name,
+                    img: styles[o].img,
+                    style: styles[o].style
                 }
             }),
-            value: "defaultStyle"
+            value: "style01"
         },
         dueDate : {
             label: "Due date",
