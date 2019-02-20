@@ -54,7 +54,7 @@ export const style01 = {
     name: 'Nerd Bag',
     style: {
         fontFamily: "Courier New",
-        border: "dashed 3px",
+        border: "dashed 6px",
         background: "#11df11"
     },
     img: img001
@@ -65,7 +65,7 @@ export const style02 = {
     style: {
         fontFamily: "Times New Roman",
         backgroundColor: "#4aaaff",
-        border: "ridge 10px #4a7aff",
+        border: "ridge 6px #4a7aff",
         borderRadius: "6px"
 
     },
@@ -86,44 +86,54 @@ export const style03 = {
 export const style04 = {
     name: 'Christmas present',
     style: {
-        fontFamily: "Times New Roman",
-
+        fontFamily: "Garamond",
+        backgroundColor: "#e7001f",
+        color: "#fff5cb",
+        border: "inset 6px #00b7be",
     },
     img: img004
 };
 
 export const style05 = {
-    name: 'Christmas present 2',
+    name: 'Snowy presents',
     style: {
-        fontFamily: "Times New Roman",
-
+        fontFamily: "Garamond",
+        backgroundColor: "#ffffff",
+        color: "#ba0d5c",
+        border: "dashed 6px #ba0d5c",
     },
     img: img005
 };
 
 export const style06 = {
-    name: 'Simple Red & Blue',
+    name: 'Fine pralines',
     style: {
         fontFamily: "Times New Roman",
-
+        backgroundColor: "#e9edf5",
+        color: "#3440db",
+        border: "ridge 6px #e80e03",
     },
     img: img006
 };
 
-
 export const style07 = {
-    name: 'Cute & red',
+    name: 'Small ring box',
     style: {
         fontFamily: "Times New Roman",
-
+        backgroundColor: "#f1543f",
+        color: "#2b3b4e",
+        border: "ridge 6px #2b3b4e",
     },
     img: img007
 };
 
 export const style08 = {
-    name: 'Cute & red',
+    name: 'Baby sky',
     style: {
         fontFamily: "Times New Roman",
+        backgroundColor: "#b8eef1",
+        color: "#121149",
+        border: "ridge 6px #b8eef1",
     },
     img: img008
 };
@@ -132,7 +142,9 @@ export const style09 = {
     name: 'Small gift card',
     style: {
         fontFamily: "Times New Roman",
-
+        backgroundColor: "#38c6d9",
+        color: "#121149",
+        border: "outset 6px #ff6161",
     },
     img: img009
 };
@@ -141,11 +153,13 @@ export const style10 = {
     name: 'Big Orange',
     style: {
         fontFamily: "Times New Roman",
-
+        backgroundColor: "#ffcebf",
+        color: "#dd3400",
+        border: "inset 6px #dd3400",
     },
     img: img010
 };
-
+/*
 export const style11 = {
     name: 'Blue gift card',
     style: {
@@ -515,3 +529,4 @@ export const style51 = {
     },
     img: img051
 };
+*/
