@@ -1,0 +1,8 @@
+.exampleBox {
+    display: flex;
+    flex-flow: column;
+    width: 240px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}

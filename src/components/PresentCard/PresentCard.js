@@ -3,6 +3,9 @@ import ContentCard from './../ContentCard/ContentCard';
 import styles from './PresentCard.module.css';
 
 const presentCard = props => {
+    if (!props.title) {
+        return <div className={styles.card}>{props.children}</div>;
+    }
     return (<ContentCard className={styles.card} {...props}>{props.children}</ContentCard>);
 };
 

@@ -5,3 +5,9 @@ h1 {
 main {
     max-width: 800px;
 }
+
+.example-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
