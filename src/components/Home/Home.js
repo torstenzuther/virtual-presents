@@ -7,8 +7,8 @@ import { Typography } from '@material-ui/core';
 
 const home = (props) => {
     const seconds = 30;
-    return <main><h1>Little Joy - personal heartfelt digital vouchers</h1>
-    <ContentCard><Typography>Welcome to Little Joy - create personal heartfelt digital vouchers for your friends, family, colleagues and the people you love!</Typography></ContentCard>
+    return <main><h1>Little Joy - personal digital gift cards</h1>
+    <ContentCard><Typography>Welcome to Little Joy - create personal digital gift cards for your friends, family, colleagues and the people you love!</Typography></ContentCard>
 <article>
     <ContentCard title={"How does it work?"}>
         <ol><li><Typography>Register with your e-mail address</Typography></li>
