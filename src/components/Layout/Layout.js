@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './../Navigation/Navigation';
 import styles from './Layout.module.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Footer from '../Footer/Footer';
 
 const layout = (props) => {
     return (
@@ -9,6 +10,7 @@ const layout = (props) => {
             <CssBaseline />
             <Navigation />
             <div className={styles.content}>{props.children}</div>
+            <Footer></Footer>
         </>
     );
 };
