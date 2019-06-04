@@ -229,6 +229,7 @@
 
 - Amazon digital gift cards
 - XBox digital gift cards
+- AirBnB gift card
 
 Possible idea: Tune amazon and Xbox gift cards
 
