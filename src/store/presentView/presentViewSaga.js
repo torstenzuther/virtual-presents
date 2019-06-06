@@ -7,10 +7,15 @@ import { getSeconds } from './../../utility/utility';
 
 function* presentViewInit(action) {
     try {
-        const response = yield call(api.getPresentPreview, action.id);
-        let seconds = yield getSeconds(response.data.dueDate);
-        yield put(actions.presentPreviewInit(response.data));
-        yield elapseTimer(action.id, seconds, false);
+        const paymentResponse = yield call(api.getPaymentStatus, action.id);
+        if (paymentResponse.data !== "Completed") {
+            yield put(actions.presentPayment(action.id));
+        } else {
+            const response = yield call(api.getPresentPreview, action.id);
+            let seconds = yield getSeconds(response.data.dueDate);
+            yield put(actions.presentPreviewInit(response.data));
+            yield elapseTimer(action.id, seconds, false);
+        }
     } catch (e) {
         yield put(actions.presentError());
     }

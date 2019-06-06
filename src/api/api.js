@@ -50,6 +50,10 @@ const getPresentSecret = (id) => {
     return presentEndpoint.get(`present/${id}/secret.json`);
 };
 
+const getPaymentStatus = (id) => {
+    return presentEndpoint.get(`payment/${id}/paymentstatus.json`);
+}
+
 const createPresent = (present, auth) => {
     const presentTransformed = {
         preview: {
@@ -90,7 +94,8 @@ const api = {
     createPresent: createPresent,
     getPresentPreview: getPresentPreview,
     getPresentSecret: getPresentSecret,
-    getError: getError
+    getError: getError,
+    getPaymentStatus: getPaymentStatus
 }
 
 export default api;

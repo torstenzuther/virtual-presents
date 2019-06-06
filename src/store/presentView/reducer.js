@@ -5,7 +5,8 @@ const initialState = {
     seconds: null,
     preview: null,
     secret: null,
-    error: false
+    error: false,
+    paymentNeeded: false,
 };
 
 const deepCopy = state => {
@@ -55,6 +56,12 @@ const presentError = (state, action) => {
     return result;
 };
 
+const presentPayment = (state, action) => {
+    const result = deepCopy(state);
+    result.paymentNeeded = true;
+    return result;
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.PRESENT_PREVIEW_INIT: return presentPreviewInit(state, action);
@@ -63,6 +70,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SHOW_PRESENT: return showPresent(state, action);
         case actionTypes.PRESENT_ERROR: return presentError(state, action);
         case actionTypes.PRESENT_TIMER_INTERVAL_ELAPSED: return presentTimerIntervalElapsed(state, action);
+        case actionTypes.PRESENT_PAYMENT: return presentPayment(state, action);
         default: return state;
     }
 }

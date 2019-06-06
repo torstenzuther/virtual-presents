@@ -41,3 +41,10 @@ export const presentError = () => {
         type: actionTypes.PRESENT_ERROR,
     };
 };
+
+export const presentPayment = (id) => {
+    return {
+        type: actionTypes.PRESENT_PAYMENT,
+        id: id
+    };
+}

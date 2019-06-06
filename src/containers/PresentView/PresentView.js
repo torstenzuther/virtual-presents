@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import * as actions from './../../store/presentView/actions';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Redirect } from 'react-router-dom';
+import Checkout from './../../components/Checkout/Checkout';
+import * as config from './../../utility/config';
+
 
 class PresentView extends Component {
 
@@ -15,6 +18,11 @@ class PresentView extends Component {
     }
     
     render() {
+        const presentLink = `${config.frontendUrl}presents/${this.props.match.params.id}`;
+   
+        if (this.props.presentView.paymentNeeded) {  
+            return <Checkout presentId={this.props.match.params.id} presentUrl={presentLink}></Checkout>
+        }
         if (this.props.presentView.error) {
             return <Redirect to="/" />
         }
