@@ -12,7 +12,7 @@
 | Category | Description | Status |
 | --- | --- | --- |
 | P | find niche / users | in progress |
-| F | payment | queued |
+| F | payment - redirect to present and after payment return back | in progress |
 | P | post news (Twitter) | queued |
 | B | make clearer that it is a present, that you have to click | queued | 
 | F | image upload / document upload with cloud storage | queued |
@@ -30,4 +30,4 @@
 | R | unit tests | queued |
 | F | menu icons | queued |
 | F | theme | queued |
-| F | slide show √úberg√§nge | queued |
+| F | slide show ‹berg‰nge | queued |
