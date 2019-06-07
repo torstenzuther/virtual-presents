@@ -17,6 +17,7 @@
 | B | make clearer that it is a present, that you have to click | queued | 
 | F | image upload / document upload with cloud storage | queued |
 | F | make more styles and improve styles | queued |
+| F | store redux store to local storage | queued |
 | B | validation rules: style must be one of predefined values (image upload or  better  style comes Form backend) | queued |
 | R | code splitting for styles | queued |
 | R | get predefined styles from firebase | queued |
@@ -30,4 +31,4 @@
 | R | unit tests | queued |
 | F | menu icons | queued |
 | F | theme | queued |
-| F | slide show Übergänge | queued |
+| F | slide show ï¿½bergï¿½nge | queued |
