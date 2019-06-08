@@ -6,6 +6,7 @@ import PresentInput from '../PresentInput/PresentInput';
 import Auth from '../Auth/Auth';
 import PresentView from '../../containers/PresentView/PresentView';
 import QrCodeModal from '../../components/QrCode/QrCode';
+import PurchaseRedirect from '../PurchaseRedirect/PurchaseRedirect';
 
 class App extends Component  {
 
@@ -13,6 +14,7 @@ class App extends Component  {
 
         return (
             <Switch>
+                <Route exact path="/purchased/" component={PurchaseRedirect} />
                 <Route exact path="/presents/:id" component={PresentView} />
                 <Route exact path="/qr/:id" component={QrCodeModal} />
                 <Layout>

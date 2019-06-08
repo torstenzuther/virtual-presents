@@ -8,17 +8,20 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import presentInputReducer from './store/presentInput/reducer';
 import authReducer from './store/auth/reducer';
 import presentViewReducer from './store/presentView/reducer';
+import checkoutReducer from './store/checkout/reducer';
 import createSagaMiddleware from 'redux-saga';
 import authSaga from './store/auth/authSaga';
 import presentInputSaga from './store/presentInput/presentInputSaga';
 import presentViewSaga from './store/presentView/presentViewSaga';
+import checkoutSaga from './store/checkout/checkoutSaga';
 import './index.css';
 import 'typeface-roboto';
 
 const reducers = combineReducers({
     auth: authReducer,
     presentInput: presentInputReducer,
-    presentView: presentViewReducer
+    presentView: presentViewReducer,
+    checkout: checkoutReducer
 });
 
 const composeEnhancers =
@@ -30,14 +33,16 @@ const composeEnhancers =
 const authSagaMiddleware = createSagaMiddleware();
 const presentInputSagaMiddleware = createSagaMiddleware();
 const presentViewSagaMiddleware = createSagaMiddleware();
+const checkoutSagaMiddleware = createSagaMiddleware();
 const enhancer = composeEnhancers(applyMiddleware(authSagaMiddleware, 
-    presentInputSagaMiddleware, presentViewSagaMiddleware));
+    presentInputSagaMiddleware, presentViewSagaMiddleware, checkoutSagaMiddleware));
 
 const store = createStore(reducers, enhancer);
 
 authSagaMiddleware.run(authSaga);
 presentInputSagaMiddleware.run(presentInputSaga);
 presentViewSagaMiddleware.run(presentViewSaga);
+checkoutSagaMiddleware.run(checkoutSaga);
 
 const app = (
     <Provider store={store}>
