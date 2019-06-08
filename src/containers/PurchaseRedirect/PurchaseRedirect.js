@@ -15,7 +15,7 @@ class PurchaseRedirect extends Component {
 
 const mapStateToProps = (state) => {
     return { 
-        purchaseInitiatedId: state.purchaseInitiatedId,
+        purchaseInitiatedId: state.checkout.purchaseInitiatedId,
     };
 };
 
