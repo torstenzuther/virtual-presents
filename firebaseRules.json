@@ -1,33 +1,42 @@
 {
-  "rules": {
-    "present": {
-       "$present_id": {
-         	 ".write": "newData.hasChild('userId') && (newData.child('userId').val() === auth.uid) && (!data.exists() || !newData.exists())",
-           ".validate": "newData.hasChildren(['createdAt', 'userId', 'secret', 'preview'])",
-           "preview": {
-             ".validate": "newData.hasChildren(['dueDate','previewText','style'])",
-             ".read": true,
-             ".write": "newData.hasChildren(['dueDate, previewText, style'])",
-             "dueDate": {
-                ".validate": "newData.isNumber() && newData.val() > now"
-             },
-             "previewText": {
-                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
-             },           
-             "style": {
-             }
-           },
-           "secret": {
-              ".read": "data.parent().child('preview').child('dueDate').val() <= now + 10000",
-             ".validate": "newData.hasChildren(['presentTextBox','presentText'])",
-             "presentTextBox": {
-          		".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
-             },
-             "presentText": {
-                ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
-             },
+   "rules": {
+        "payment":
+        {
+         "$present_id": {
+           "paymentstatus" : {
+             ".read": true
            }
-       }
-    }
-  }
-}
+         }
+       },
+     "present": {
+        "$present_id": {
+              ".write": "newData.hasChild('userId') && (newData.child('userId').val() === auth.uid) && (!data.exists() || !newData.exists())",
+            ".validate": "newData.hasChildren(['createdAt', 'userId', 'secret', 'preview'])",
+            "preview": {
+              ".validate": "newData.hasChildren(['dueDate','previewText','style'])",
+              ".read": "data.parent().parent().parent().child('payment').child($present_id).child('paymentstatus').val() === 'Completed'
+              && data.parent().parent().parent().child('payment').child($present_id).child('mc_gross').val() === 1.49",
+              ".write": "newData.hasChildren(['dueDate, previewText, style'])",
+              "dueDate": {
+                 ".validate": "newData.isNumber() && newData.val() > now"
+              },
+              "previewText": {
+                 ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
+              },           
+              "style": {
+              }
+            },
+            "secret": {
+              ".read": "data.parent().parent().parent().child('payment').child($present_id).child('paymentstatus').val() === 'Completed' &&  data.parent().parent().parent().child('payment').child($present_id).child('mc_gross').val() === 1.49 && data.parent().child('preview').child('dueDate').val() <= now + 10000",
+              ".validate": "newData.hasChildren(['presentTextBox','presentText'])",
+              "presentTextBox": {
+                 ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
+              },
+              "presentText": {
+                 ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
+              },
+            }
+        }
+     }
+   }
+ }
