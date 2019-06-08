@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as config from './../utility/config';
 
 
-const errors = {
+const errorCodeMapping = {
     "EMAIL_NOT_FOUND": "User does not exist",
     "INVALID_PASSWORD": "Invalid password. Please try again",
     "USER_DISABLED": "The user has been disabled",
@@ -11,7 +11,7 @@ const errors = {
     "TOO_MANY_ATTEMPTS_TRY_LATER": "Too many failed attempts. Please try again later"
 };
 
-const presentEndpoint = axios.create({
+const baseUrl = axios.create({
     baseURL: config.backendUrl,
     timeout: 3000,
     withCredentials: false,
@@ -20,13 +20,13 @@ const presentEndpoint = axios.create({
     }
 });
 
-const authEndpoint = axios.create({
+const authUrl = axios.create({
     baseURL: config.identityUrl,
     timeout: 3000
   });
 
 const signUpUser = (emailPassword) => {
-    return authEndpoint.post(`signupNewUser?key=${config.apiKey}`, {
+    return authUrl.post(`signupNewUser?key=${config.apiKey}`, {
         email: emailPassword.email,
         password: emailPassword.password,
         returnSecureToken: true
@@ -34,7 +34,7 @@ const signUpUser = (emailPassword) => {
 };
 
 const signInUser = (emailPassword) => {
-    return authEndpoint.post(`verifyPassword?key=${config.apiKey}`, {
+    return authUrl.post(`verifyPassword?key=${config.apiKey}`, {
         email: emailPassword.email,
         password: emailPassword.password,
         returnSecureToken: true
@@ -43,15 +43,15 @@ const signInUser = (emailPassword) => {
 
 
 const getPresentPreview = (id) => {
-    return presentEndpoint.get(`present/${id}/preview.json`);
+    return baseUrl.get(`present/${id}/preview.json`);
 };
 
 const getPresentSecret = (id) => {
-    return presentEndpoint.get(`present/${id}/secret.json`);
+    return baseUrl.get(`present/${id}/secret.json`);
 };
 
 const getPaymentStatus = (id) => {
-    return presentEndpoint.get(`payment/${id}/paymentstatus.json`);
+    return baseUrl.get(`payment/${id}/paymentstatus.json`);
 }
 
 const createPresent = (present, auth) => {
@@ -70,7 +70,7 @@ const createPresent = (present, auth) => {
         ".sv": "timestamp"
     };
     presentTransformed.userId = auth.userId;
-    return presentEndpoint.post('present.json?auth=' + auth.token, presentTransformed);
+    return baseUrl.post('present.json?auth=' + auth.token, presentTransformed);
 };
 
 const getError = (e) => {
@@ -82,8 +82,8 @@ const getError = (e) => {
         && e.response.data.error.message) {
         error = e.response.data.error.message;
     }
-    if (errors[error]) {
-        error = errors[error];
+    if (errorCodeMapping[error]) {
+        error = errorCodeMapping[error];
     }
     return error;
 }

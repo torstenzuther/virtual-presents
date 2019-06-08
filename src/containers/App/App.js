@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Layout from '../../components/Layout/Layout';
+import Layout from '../Layout/Layout';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Home from '../../components/Home/Home';
+import Home from '../Home/Home';
 import PresentInput from '../PresentInput/PresentInput';
-import Auth from '../../components/Auth/Auth';
+import Auth from '../Auth/Auth';
 import PresentView from '../../containers/PresentView/PresentView';
 import QrCodeModal from '../../components/QrCode/QrCode';
 

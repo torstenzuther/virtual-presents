@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Input.module.css';
-import Button from '@material-ui/core/Button';
+import Button from './../Button/Button';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Typography } from '@material-ui/core';
 import DateTimePicker from 'react-datetime-picker';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Text from './../Text/Text';
 
 
 const onDateTimeValueChanged = (onChange, val, id) => {
@@ -50,7 +50,7 @@ const input = props => {
     }
     return ( 
         <div className={styles.Input}>{input}
-            <Typography color="error">{props.errorMessage}</Typography>
+            <Text color="error">{props.errorMessage}</Text>
         </div>
     );
 };

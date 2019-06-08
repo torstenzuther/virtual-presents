@@ -1,21 +1,21 @@
 import React from 'react';
 import ContentCard from '../../components/ContentCard/ContentCard';
 import './Home.css';
-import * as styles from './../../assets/styles';
-import Example from './../../containers/Example/Example';
-import { Typography } from '@material-ui/core';
+import * as styles from '../../assets/styles';
+import Example from '../Example/Example';
+import Text from '../../components/Text/Text';
 
 const home = (props) => {
     const seconds = 30;
     return <main><h1>Little Joy - personal digital gift cards</h1>
-    <ContentCard><Typography>Welcome to Little Joy - create personal digital gift cards for your friends, family, colleagues and the people you love!</Typography></ContentCard>
+    <ContentCard><Text>Welcome to Little Joy - create personal digital gift cards for your friends, family, colleagues and the people you love!</Text></ContentCard>
 <article>
     <ContentCard title={"How does it work?"}>
-        <ol><li><Typography>Register with your e-mail address</Typography></li>
-        <li><Typography>Create your Little Joy gift card. Therefore enter the date of the event, a preview text with a placeholder 
+        <ol><li><Text>Register with your e-mail address</Text></li>
+        <li><Text>Create your Little Joy gift card. Therefore enter the date of the event, a preview text with a placeholder 
             containing the remaining seconds, your Little Joy greeting text  which will show up beneath the gift box and the actual Little Joy Text which will appear after your recipient clicks in the gift. He can only see the preview text until the event date.
-            You should also choose a style.</Typography>
-        </li><li><Typography>After your Little Joy gift card has been created,  you can share it as a link or a QR code!</Typography></li>
+            You should also choose a style.</Text>
+        </li><li><Text>After your Little Joy gift card has been created,  you can share it as a link or a QR code!</Text></li>
         </ol>
    </ContentCard>
 </article>

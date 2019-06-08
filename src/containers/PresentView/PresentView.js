@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import TimerMessage from './../../components/TimerMessage/TimerMessage';
-import Present from './../../components/Present/Present';
-import PresentBox from './../../components/PresentBox/PresentBox';
+import TimerMessage from './../TimerMessage/TimerMessage';
+import Present from './../Present/Present';
+import PresentBox from './../PresentBox/PresentBox';
 import * as styles from './../../assets/styles';
 import { connect } from 'react-redux';
 import * as actions from './../../store/presentView/actions';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { Redirect } from 'react-router-dom';
-import Checkout from './../../components/Checkout/Checkout';
+import Checkout from './../Checkout/Checkout';
 import * as config from './../../utility/config';
-
+import Progress from './../../components/Progress/Progress';
 
 class PresentView extends Component {
 
@@ -28,7 +27,7 @@ class PresentView extends Component {
         }
         if ((!this.props.presentView.preview ||
              !this.props.presentView.seconds) && !this.props.presentView.secret) {
-            return <CircularProgress />;
+            return <Progress />;
         }
         const selectedStyle = styles[this.props.presentView.preview.style];
         if (this.props.presentView.secret) {

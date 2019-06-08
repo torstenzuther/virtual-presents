@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentCard from './../ContentCard/ContentCard';
+import ContentCard from '../../components/ContentCard/ContentCard';
 import styles from './PresentCard.module.css';
 
 const presentCard = props => {

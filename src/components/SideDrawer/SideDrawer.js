@@ -12,7 +12,6 @@ const sideDrawer = (props) =>  {
 
     const sideList = (
         <List>
-          
           <ListItem><img src={logo} alt="" width="45px" height="45px" /></ListItem>
           {props.items.map((item, index) => (
             item.route 

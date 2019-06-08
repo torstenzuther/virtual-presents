@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TimerMessage from './../../components/TimerMessage/TimerMessage';
-import Present from './../../components/Present/Present';
-import PresentBox from './../../components/PresentBox/PresentBox';
+import TimerMessage from './../TimerMessage/TimerMessage';
+import Present from './../Present/Present';
+import PresentBox from './../PresentBox/PresentBox';
 import * as styles from './../../assets/styles';
 import cssStyle  from './PresentInput.module.css';
 import Form from './../Form/Form';
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/presentInput/actions';
 import Message from '../../components/Message/Message';
 import ContentCard from './../../components/ContentCard/ContentCard';
-import QrCodeModal from '../../components/QrCodeModal/QrCodeModal';
+import QrCodeModal from '../QrCodeModal/QrCodeModal';
 
 class PresentInput extends Component {
 

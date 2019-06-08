@@ -1,21 +1,21 @@
 import React from 'react';
-import TimerMessage from '../../components/TimerMessage/TimerMessage';
-import PresentBox from '../../components/PresentBox/PresentBox';
-import Present from '../../components/Present/Present';
-import Icon from '@material-ui/core/Icon';
+import TimerMessage from '../TimerMessage/TimerMessage';
+import PresentBox from '../PresentBox/PresentBox';
+import Present from '../Present/Present';
 import styles from './Example.module.css';
-
+import Icon from './../../components/Icon/Icon';
 
 const example = (props) => {
+    const arrowIcon =  <Icon style={{fontSize: 48, margin: "auto"}}>arrow_downward</Icon>;
     return (
     <div className={styles.exampleBox}>
         <TimerMessage text={props.previewText} 
                 cssStyle={props.cssStyle}
                 seconds={props.seconds} />
-        <Icon style={{fontSize: 48, margin: "auto"}}>arrow_downward</Icon>
+        {arrowIcon}
         <PresentBox text={props.presentBoxText} img={props.presentImg}
         cssStyle={props.cssStyle} />
-        <Icon style={{fontSize: 48, margin: "auto"}}>arrow_downward</Icon>
+        {arrowIcon}
         <Present text={props.presentText} cssStyle={props.cssStyle}/>
     </div>
     );

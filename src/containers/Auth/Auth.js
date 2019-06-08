@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Form from './../../containers/Form/Form';
+import Form from '../Form/Form';
 import { connect } from 'react-redux'; 
 import * as actions from '../../store/auth/actions';
-import Message from './../Message/Message';
+import Message from '../../components/Message/Message';
 import { Redirect, withRouter } from 'react-router-dom';
-import ContentCard from './../ContentCard/ContentCard';
+import ContentCard from '../../components/ContentCard/ContentCard';
 import styles from './Auth.module.css';
 
 class Auth extends Component {

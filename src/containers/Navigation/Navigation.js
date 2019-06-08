@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import { connect } from 'react-redux';
-import * as actions from './../../store/auth/actions';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SideDrawer from './../SideDrawer/SideDrawer';
-import { Typography } from '@material-ui/core';
+import * as actions from '../../store/auth/actions';
+import AppBar from './../../components/AppBar/AppBar';
+import NavButton from './../../components/NavButton/NavButton';
+import Button from './../../components/Button/Button';
+import Toolbar from './../../components/Toolbar/Toolbar';
+import IconButton from './../../components/IconButton/IconButton';
+import SideDrawer from '../../components/SideDrawer/SideDrawer';
 import logo from './../../assets/logo.png';
+import Text from './../../components/Text/Text';
+import Icon from './../../components/Icon/Icon';
 
 class Navigation extends Component {
 
@@ -45,9 +46,9 @@ class Navigation extends Component {
             menuItems.map(mi => 
                 mi.route 
                 ?
-                    (<Button key={mi.name} component={NavLink} 
+                    (<NavButton key={mi.name}
                         exact activeClassName={styles.active} to={mi.route}>{mi.name}
-                    </Button>)
+                    </NavButton>)
                 : (<Button key={mi.name} onClick={mi.action}>{mi.name}</Button>)
             )
         
@@ -56,7 +57,7 @@ class Navigation extends Component {
                 <Toolbar>
                     <div className={styles.MobileNavMenuIcon}>
                         <IconButton color="inherit" onClick={this.onSideDrawerToggle}>
-                            <MenuIcon />
+                            <Icon>menu</Icon>
                         </IconButton>
                         <SideDrawer open={this.state.open} onClose={this.onSideDrawerToggle} 
                             toggleOpen={this.onSideDrawerToggle} items={menuItems}>
@@ -68,7 +69,7 @@ class Navigation extends Component {
                         {desktopMenu}</div>
                     </div>
                     <div className={styles.login}>
-                        <Typography>{this.props.email}</Typography>
+                        <Text>{this.props.email}</Text>
                     </div>
                 </Toolbar>
             </AppBar>

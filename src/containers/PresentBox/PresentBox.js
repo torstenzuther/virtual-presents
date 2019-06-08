@@ -1,6 +1,6 @@
 import React from 'react';
 import cssStyle from './PresentBox.module.css';
-import PresentCard from './../PresentCard/PresentCard';
+import PresentCard from '../PresentCard/PresentCard';
 
 const presentBox = (props) => {
     return (

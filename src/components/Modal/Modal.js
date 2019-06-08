@@ -1,14 +1,22 @@
 import React from 'react';
-import style from './Modal.module.css';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const modal = props => {
-    let modal = (<><div className={style.Backdrop} onClick={props.backdropClicked}></div>
-        <div className={style.Modal}>{props.children}</div></>);
-
-    if (!props.show) {
-        modal = null;
-    }
-    return modal;
+    return (<Dialog open={props.open} TransitionComponent={props.TransitionComponent}
+        keepMounted={props.keepMounted} onClose={props.onClose} 
+    maxWidth={props.maxWidth}
+    fullWidth={props.fullWidth}>
+    <DialogTitle>{props.title}</DialogTitle>
+    <DialogContent>
+      {props.children}
+    </DialogContent>
+    <DialogActions>
+      {props.actions}
+    </DialogActions>
+  </Dialog>);
 };
 
 export default modal;

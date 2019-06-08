@@ -1,11 +1,11 @@
 import React from 'react';
-import ContentCard from './../ContentCard/ContentCard';
-import { Typography } from '@material-ui/core';
+import ContentCard from '../../components/ContentCard/ContentCard';
+import Text from '../../components/Text/Text';
 
 const checkout = (props) => {
     return (
         <ContentCard>
-            <Typography>Please buy your Little Joy digital gift card make it appear here!</Typography>
+            <Text>Please buy your Little Joy digital gift card make it appear here!</Text>
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                 <input type="hidden" name="cmd" value="_s-xclick" />
                 <input type="hidden" name="hosted_button_id" value="RAG2ZX7THT384" />
