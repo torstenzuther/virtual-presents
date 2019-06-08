@@ -6,3 +6,9 @@ export const purchaseInitiated = (id) => {
         id: id
     };
 };
+
+export const redirectInit = () => {
+    return {
+        type: actionTypes.REDIRECT_INIT,
+    };
+};
