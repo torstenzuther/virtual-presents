@@ -5,7 +5,7 @@ admin.initializeApp();
 
 exports.notifyPayment = functions.https.onRequest(async (req, res) => {
     const id = req.body.custom;
-     await admin.database().ref(`/payment/${id}/`).push(
+     await admin.database().ref(`/payment/${id}/`).set(
         { 
             payment_date: req.body.payment_date,
             payment_status: req.body.payment_status,

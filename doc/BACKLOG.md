@@ -19,6 +19,7 @@
 | F | make more styles and improve styles | queued |
 | F | store redux store to local storage | queued |
 | B | validation rules: style must be one of predefined values (image upload or  better  style comes Form backend) | queued |
+| B | make payments 100% secure (send response to paypal directly? ) | queued |
 | R | code splitting for styles | queued |
 | R | get predefined styles from firebase | queued |
 | R | separate ui and redux state | queued |
