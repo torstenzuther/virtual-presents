@@ -5,7 +5,7 @@ admin.initializeApp();
 
 exports.notifyPayment = functions.https.onRequest(async (req, res) => {
     const body = req.body;
-    const id = req.body.custom;
+    const id = body.custom;
     const payment_date = body.payment_date ? body.payment_date : "";
     const payment_status = body.payment_status ? body.payment_status : "";
     const address_status = body.address_status ? body.address_status : "";
@@ -76,5 +76,5 @@ exports.notifyPayment = functions.https.onRequest(async (req, res) => {
         }
     );
 
-    res.send(req.body);
+    res.send(body);
   });
