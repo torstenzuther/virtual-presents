@@ -12,7 +12,7 @@
 | Category | Description | Status |
 | --- | --- | --- |
 | P | find niche / users | in progress |
-| F | payment - redirect to present and after payment return back | in progress |
+| F | make presents beautiful | in progress |
 | P | post news (Twitter) | queued |
 | B | make clearer that it is a present, that you have to click | queued | 
 | F | image upload / document upload with cloud storage | queued |
@@ -20,6 +20,7 @@
 | F | store redux store to local storage | queued |
 | B | validation rules: style must be one of predefined values (image upload or  better  style comes Form backend) | queued |
 | B | make payments 100% secure (send response to paypal directly? ) | queued |
+| B | improve payment workflow so that user does not have to refresh present page | queued |
 | R | code splitting for styles | queued |
 | R | get predefined styles from firebase | queued |
 | R | separate ui and redux state | queued |
