@@ -51,7 +51,7 @@ const getPresentSecret = (id) => {
 };
 
 const getPaymentStatus = (id) => {
-    return baseUrl.get(`payment/${id}/paymentstatus.json`);
+    return baseUrl.get(`payment/${id}/payment_status.json`);
 }
 
 const createPresent = (present, auth) => {
