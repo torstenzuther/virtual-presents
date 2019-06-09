@@ -21,25 +21,28 @@ class QrCodeModal extends React.Component {
     const actions = (<>
       <Button onClick={this.props.handleClose} color="primary">Close</Button>
       <Button color="primary" onClick={() => {
-        this.props.history.replace(`/qr/${encodeURIComponent(presentLink)}`)
-      }}>Open QR Code</Button></>);
+        this.props.history.push(`/qr/${encodeURIComponent(presentLink)}`)
+      }}>Open QR Code</Button>
+      <Button color="primary" onClick={() => {
+        this.props.history.push(`/presents/${this.props.presentId}`)
+      }}>Checkout</Button>
+      </>);
     return (
       <Modal open={this.props.open} TransitionComponent={Transition} keepMounted
         onClose={this.handleClose}
-        maxWidth={"xs"}
+        maxWidth={"sm"}
         fullWidth={true}
         title={"Your Little Joy"}
         actions={actions}>
         <div className={styles.linkBox}>
+          <QrCode qrCode={presentLink} />
           <div className={styles.input}>
             <Input type="text" disabled value={presentLink}></Input>
             <IconButton color="inherit" onClick={() => {
-              navigator.clipboard.writeText(presentLink);
             }}>
               <Icon>file_copy</Icon>
             </IconButton>
           </div>
-          <QrCode qrCode={presentLink} />
         </div>
       </Modal>
     );

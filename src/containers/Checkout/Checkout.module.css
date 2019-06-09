@@ -1,0 +1,11 @@
+.contentCard {
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+.centered {
+    margin: auto;
+    display: block;
+    padding-top: 20px;
+}
