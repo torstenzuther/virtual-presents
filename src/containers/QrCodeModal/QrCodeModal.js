@@ -39,6 +39,7 @@ class QrCodeModal extends React.Component {
           <div className={styles.input}>
             <Input type="text" disabled value={presentLink}></Input>
             <IconButton color="inherit" onClick={() => {
+              navigator.clipboard.writeText(presentLink);
             }}>
               <Icon>file_copy</Icon>
             </IconButton>
