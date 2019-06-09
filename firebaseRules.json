@@ -14,7 +14,7 @@
            ".validate": "newData.hasChildren(['createdAt', 'userId', 'secret', 'preview'])",
            "preview": {
              ".validate": "newData.hasChildren(['dueDate','previewText','style'])",
-             ".read": "data.parent().parent().parent().child('payment').child($present_id).child('paymentstatus').val() === 'Completed'
+             ".read": "data.parent().parent().parent().child('payment').child($present_id).child('payment_status').val() === 'Completed'
              && data.parent().parent().parent().child('payment').child($present_id).child('mc_gross').val() === 1.49",
              ".write": "newData.hasChildren(['dueDate, previewText, style'])",
              "dueDate": {
@@ -27,7 +27,7 @@
              }
            },
            "secret": {
-             ".read": "data.parent().parent().parent().child('payment').child($present_id).child('paymentstatus').val() === 'Completed' &&  data.parent().parent().parent().child('payment').child($present_id).child('mc_gross').val() === 1.49 && data.parent().child('preview').child('dueDate').val() <= now + 10000",
+             ".read": "data.parent().parent().parent().child('payment').child($present_id).child('payment_status').val() === 'Completed' &&  data.parent().parent().parent().child('payment').child($present_id).child('mc_gross').val() === 1.49 && data.parent().child('preview').child('dueDate').val() <= now + 10000",
              ".validate": "newData.hasChildren(['presentTextBox','presentText'])",
              "presentTextBox": {
           		".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 300"
