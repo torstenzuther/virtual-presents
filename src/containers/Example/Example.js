@@ -13,7 +13,7 @@ const example = (props) => {
                 cssStyle={props.cssStyle}
                 seconds={props.seconds} />
         {arrowIcon}
-        <PresentBox text={props.presentBoxText} img={props.presentImg}
+        <PresentBox text={props.presentBoxText} component={props.presentComponent}
         cssStyle={props.cssStyle} />
         {arrowIcon}
         <Present text={props.presentText} cssStyle={props.cssStyle}/>

@@ -5,9 +5,6 @@
         "$present_id": {
           "payment_status" : {
             ".read": true
-          },
-          "mc_gross": {
-            ".read": true
           }
         }
       },

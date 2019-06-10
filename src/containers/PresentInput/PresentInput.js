@@ -62,7 +62,7 @@ class PresentInput extends Component {
                         cssStyle={selectedStyle.style}
                         seconds={this.props.seconds}/>
                 <PresentBox  title="Box" text={this.props.inputs.presentTextBox.value} 
-                        img={selectedStyle.img} cssStyle={selectedStyle.style} />
+                        img={selectedStyle.img} cssStyle={selectedStyle.style} component={selectedStyle.component} />
                 <Present title="Little Joy" text={this.props.inputs.presentText.value} 
                         cssStyle={selectedStyle.style}/> 
             </div>

@@ -17,7 +17,7 @@ const input = props => {
     
     let input;
     const {touched, errorMessage, ...otherProps} = props;
-
+    
     switch (props.type) {
         case 'select':
             input = <><FormHelperText>{props.label}</FormHelperText><Select variant="outlined" {...otherProps} onChange={(e)=>props.onChange(e,props.id)}>{props.options.map(option=> 
@@ -25,8 +25,12 @@ const input = props => {
             break;
         case 'img-select':
             input = <><FormHelperText>{props.label}</FormHelperText><Select variant="outlined" {...otherProps} onChange={(e)=>props.onChange(e,props.id)}>{props.options.map(option=> 
-                <MenuItem key={option.key} value={option.key}><span style={option.style} className={styles.ImageSelect}>
-                    <img alt="" src={option.img} width="30px" height="30px"/>{option.value}</span></MenuItem>)}</Select></>;
+                {
+                const ImgComponent = option.component;
+                return <MenuItem key={option.key} value={option.key}><span style={option.style} className={styles.ImageSelect}>
+                    <ImgComponent width="30px" height="30px" />{option.value}</span></MenuItem>;})
+                    
+                }</Select></>;
             break;
         case 'textarea':
             input = <TextField fullWidth variant="outlined" {...otherProps} onChange={(e)=>props.onChange(e,props.id)}></TextField>;
