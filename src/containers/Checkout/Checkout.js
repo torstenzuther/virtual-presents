@@ -3,7 +3,6 @@ import ContentCard from '../../components/ContentCard/ContentCard';
 import Text from '../../components/Text/Text';
 import { connect } from 'react-redux';
 import * as actions from './../../store/checkout/actions';
-import PresentCard from '../PresentCard/PresentCard';
 import styles from './Checkout.module.css';
 
 class Checkout extends Component{

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './SnowyPresent.css';
 
+
 const Img = (props) => (
     <svg width={props.width} height={props.height} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
         <path
