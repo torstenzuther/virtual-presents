@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Img = (props) => (
-    <svg width={props.width} height={props.height} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+const smallGiftCard = (props) => (
+    <svg onClick={props.onClick} width={props.width} height={props.height} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
          viewBox="0 0 460 460" >
              {/* style="enable-background:new 0 0 460 460" */}
     <g>
@@ -60,12 +60,4 @@ const Img = (props) => (
     
     );
 
-export default class SmallGiftCard extends Component {
-
-    render() {
-        return <div onClick={this.props.clicked}>
-        <Img width={this.props.width} height={this.props.height} />
-    </div>
-    }
-
-};
+export default smallGiftCard;

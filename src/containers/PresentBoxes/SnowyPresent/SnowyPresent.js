@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './SnowyPresent.css';
 
-
-const Img = (props) => (
-    <svg width={props.width} height={props.height} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+const snowyPresent = (props) => (
+    <svg onClick={props.onClick} width={props.width} height={props.height} viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
         <path
             d="m512 256c0 141.386719-114.613281 256-256 256s-256-114.613281-256-256 114.613281-256 256-256 256 114.613281 256 256zm0 0"
             fill="#65b2ff" />
@@ -117,12 +116,4 @@ const Img = (props) => (
         </g>
     </svg>);
 
-export default class SnowyPresent extends Component {
-
-    render() {
-        return <div onClick={this.props.clicked}>
-            <Img width={this.props.width} height={this.props.height} />
-        </div>
-    }
-
-};
+export default snowyPresent;

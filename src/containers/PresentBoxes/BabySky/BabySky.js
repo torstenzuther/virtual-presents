@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Img = (props) => (
-    <svg width={props.width} height={props.height} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-         viewBox="0 0 460 460" > 
-         {/* style="enable-background:new 0 0 460 460" */}
+const babySky = (props) => (
+    <svg onClick={props.onClick} width={props.width} height={props.height} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+         viewBox="0 0 460 460"> 
     <g>
         <path fill="#273B7A" d="M230,0C102.975,0,0,102.975,0,230c0,100.274,64.168,185.561,153.682,217.036l293.638-292.54
             C416.076,64.558,330.577,0,230,0z"/>
@@ -55,12 +54,4 @@ const Img = (props) => (
     
     );
 
-export default class BabySky extends Component {
-
-    render() {
-        return <div onClick={this.props.clicked}>
-            <Img width={this.props.width} height={this.props.height} />
-        </div>
-    }
-
-};
+export default babySky;
