@@ -33,7 +33,7 @@ class PresentView extends Component {
         if (this.props.presentView.secret) {
             if (this.props.presentView.showBox) {
                 return <PresentBox clicked={this.props.showPresent}
-                text={this.props.presentView.secret.presentTextBox} img={selectedStyle.img} cssStyle={selectedStyle.style} component={selectedStyle.component} />;
+                text={this.props.presentView.secret.presentTextBox} cssStyle={selectedStyle.style} component={selectedStyle.component} />;
             } else {
                 return <Present text={this.props.presentView.secret.presentText} 
                 cssStyle={selectedStyle.style}/>;
