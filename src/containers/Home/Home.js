@@ -24,15 +24,15 @@ const home = (props) => {
         <div className={"example-box"}>
             <Example seconds={seconds} cssStyle={styles.style01.style} 
                 previewText={"Your nerd bag is ready in <seconds> seconds..."} 
-                presentBoxText={"Nerdy happy birthday!"} presentImg={styles.style01.img}
+                presentBoxText={"Nerdy happy birthday!"} presentComponent={styles.style01.component}
                 presentText={"This year you will get a new computer."}/>
             <Example seconds={seconds} cssStyle={styles.style02.style} 
                 previewText={"A little joy is waiting for you and can be viewed in <seconds> seconds..."} 
-                presentBoxText={"My little darling, please click me!"} presentImg={styles.style02.img}
+                presentBoxText={"My little darling, please click me!"} presentComponent={styles.style02.component}
                 presentText={"I love you! On Saturday 3rd Oct we will eat out in OUR restaurant"}/>
             <Example seconds={seconds} cssStyle={styles.style03.style} 
                 previewText={"Next Valentine's day will be in <seconds> seconds..."} 
-                presentBoxText={"Happy Valentine's day!"} presentImg={styles.style03.img}
+                presentBoxText={"Happy Valentine's day!"} presentComponent={styles.style03.component}
                 presentText={"I send you these digital flowers because I love you so much. We cannot spend this day together this year but soon we will be reunited. I LOVE YOU!"}/>
         </div>
    </ContentCard>

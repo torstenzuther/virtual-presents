@@ -20,7 +20,7 @@ const initialState = {
                 return {
                     key: o,
                     value: styles[o].name,
-                    img: styles[o].img,
+                    component: styles[o].component,
                     style: styles[o].style
                 }
             }),

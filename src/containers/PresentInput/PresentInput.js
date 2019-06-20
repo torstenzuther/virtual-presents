@@ -61,8 +61,8 @@ class PresentInput extends Component {
                 <TimerMessage title="Invitation" text={this.props.inputs.previewText.value} 
                         cssStyle={selectedStyle.style}
                         seconds={this.props.seconds}/>
-                <PresentBox  title="Box" text={this.props.inputs.presentTextBox.value} 
-                        img={selectedStyle.img} cssStyle={selectedStyle.style} />
+                <PresentBox  title="Box" text={this.props.inputs.presentTextBox.value} cssStyle={selectedStyle.style} 
+                    component={selectedStyle.component} />
                 <Present title="Little Joy" text={this.props.inputs.presentText.value} 
                         cssStyle={selectedStyle.style}/> 
             </div>

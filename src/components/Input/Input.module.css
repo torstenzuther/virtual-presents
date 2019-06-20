@@ -8,6 +8,6 @@
     width: 200px;
 }
 
-.ImageSelect > img {
+.ImageSelect > svg {
     margin-right: 15px;
 }
