@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { NavLink } from 'react-router-dom';
-import logo from './../../assets/logo.png';
+import logo from './../../assets/logo.svg';
 
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 

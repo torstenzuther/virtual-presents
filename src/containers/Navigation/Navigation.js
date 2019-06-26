@@ -9,7 +9,7 @@ import Button from './../../components/Button/Button';
 import Toolbar from './../../components/Toolbar/Toolbar';
 import IconButton from './../../components/IconButton/IconButton';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
-import logo from './../../assets/logo.png';
+import logo from './../../assets/logo.svg';
 import Text from './../../components/Text/Text';
 import Icon from './../../components/Icon/Icon';
 
