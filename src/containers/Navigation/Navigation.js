@@ -9,7 +9,7 @@ import Button from './../../components/Button/Button';
 import Toolbar from './../../components/Toolbar/Toolbar';
 import IconButton from './../../components/IconButton/IconButton';
 import SideDrawer from '../../components/SideDrawer/SideDrawer';
-import logo from './../../assets/logo.svg';
+import Logo from './../../components/Logo/Logo';
 import Text from './../../components/Text/Text';
 import Icon from './../../components/Icon/Icon';
 
@@ -64,9 +64,8 @@ class Navigation extends Component {
                         </SideDrawer>
                     </div>
                     <div className={styles.DesktopMenuItem}>
-                        <img src={logo} alt="" width="45px" height="45px" />
-                        <div className={styles.shifted}>
-                        {desktopMenu}</div>
+                        <Logo width="60px" height="60px"></Logo>
+                        <span className={styles.Shifted}>{desktopMenu}</span>
                     </div>
                     <div className={styles.login}>
                         <Text>{this.props.email}</Text>

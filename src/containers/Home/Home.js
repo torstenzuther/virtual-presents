@@ -4,10 +4,12 @@ import './Home.css';
 import * as styles from '../../assets/styles';
 import Example from '../Example/Example';
 import Text from '../../components/Text/Text';
+import AnimatedText from '../../components/AnimatedText/AnimatedText';
+
 
 const home = (props) => {
     const seconds = 30;
-    return <main><h1>Little Joy - personal digital gift cards</h1>
+    return <main><AnimatedText>Little Joy - personal digital gift cards</AnimatedText>
     <ContentCard><Text>Welcome to Little Joy - create personal digital gift cards for your friends, family, colleagues and the people you love!</Text></ContentCard>
 <article>
     <ContentCard title={"How does it work?"}>
