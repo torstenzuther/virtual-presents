@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TweenLite } from 'gsap';
+import { TweenMax, Bounce } from 'gsap';
 
 export default class AnimatedText extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ export default class AnimatedText extends Component {
     }
 
     componentDidMount(){
-        this.myTween = TweenLite.to(this.myElement, 1, {x: 100, y: 100});
+        this.myTween = TweenMax.to(this.myElement, 1.5, {x: 100, rotation: 720, scale: 1, ease: Bounce.easeOut});
       }
 
 

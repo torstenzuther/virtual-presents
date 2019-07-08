@@ -9,8 +9,10 @@ import AnimatedText from '../../components/AnimatedText/AnimatedText';
 
 const home = (props) => {
     const seconds = 30;
-    return <main><AnimatedText>Little Joy - personal digital gift cards</AnimatedText>
-    <ContentCard><Text>Welcome to Little Joy - create personal digital gift cards for your friends, family, colleagues and the people you love!</Text></ContentCard>
+    return <main>
+    <ContentCard>
+        <AnimatedText style={{textAlign: "centered"}}>Little Joy - personal digital gift cards</AnimatedText>
+        <Text>Welcome to Little Joy - create personal digital gift cards for your friends, family, colleagues and the people you love!</Text></ContentCard>
 <article>
     <ContentCard title={"How does it work?"}>
         <ol><li><Text>Register with your e-mail address</Text></li>
