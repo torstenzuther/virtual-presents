@@ -1,10 +1,7 @@
 .flex {
     display: flex;
     flex-wrap: wrap;
-}
-
-.flexRow {
-    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .flexCol {
@@ -12,5 +9,11 @@
 }
 
 .inputCard {
-    width: 400px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.preview {
+    width: 100%;
+    padding-bottom: 10px;
 }

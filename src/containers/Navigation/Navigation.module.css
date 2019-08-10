@@ -6,15 +6,16 @@
     display: none;
 }
 
+.Shifted {
+    margin-left: 60px;
+}
+
 .DesktopMenuItem {
     display: inline-block;
+    margin: auto;
 }
 
-.shifted {
-    margin-left: 45px;
-}
-
-.DesktopMenuItem > img {
+.DesktopMenuItem > svg {
     margin: 0;
     position: absolute;
     top: 50%;

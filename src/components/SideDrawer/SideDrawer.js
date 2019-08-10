@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { NavLink } from 'react-router-dom';
-import logo from './../../assets/logo.svg';
+import Logo from './../Logo/Logo';
 
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -12,7 +12,7 @@ const sideDrawer = (props) =>  {
 
     const sideList = (
         <List>
-          <ListItem><img src={logo} alt="" width="45px" height="45px" /></ListItem>
+          <ListItem><Logo width="90px" height="90px" ></Logo></ListItem>
           {props.items.map((item, index) => (
             item.route 
             ? <ListItem key={index}

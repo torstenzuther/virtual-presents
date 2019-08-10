@@ -5,11 +5,11 @@ import Footer from '../../components/Footer/Footer';
 
 const layout = (props) => {
     return (
-        <>
+        <div className={styles.layout}>
             <Navigation />
             <div className={styles.content}>{props.children}</div>
             <Footer></Footer>
-        </>
+        </div>
     );
 };
 

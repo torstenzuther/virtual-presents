@@ -34,11 +34,15 @@ class Auth extends Component {
         const errorModal = <Message message={this.props.error} 
                 show={this.props.error !== null} onClose={this.props.onAuthClearError}></Message>;
         const caption = this.props.signIn ? "SIGN IN" : "SIGN UP";
-        return (<ContentCard title={caption} className={styles.card}>{errorModal}<Form col={true} inputs={this.props.inputs} 
-            submitCaption={caption} 
-            onSubmit={this.onAuthSubmit} 
-            onValueChanged={this.onValueChanged}
-            submitDisabled={this.props.submitDisabled}/></ContentCard>);
+        return (
+            <ContentCard title={caption} className={styles.card}>
+                {errorModal}
+                <Form col={true} inputs={this.props.inputs} 
+                    submitCaption={caption} 
+                    onSubmit={this.onAuthSubmit} 
+                    onValueChanged={this.onValueChanged}
+                    submitDisabled={this.props.submitDisabled}/>
+            </ContentCard>);
     }
 };
 

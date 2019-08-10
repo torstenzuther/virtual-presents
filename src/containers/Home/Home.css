@@ -1,13 +1,9 @@
-h1 {
-    text-align: center;
-}
-
-main {
-    max-width: 800px;
-}
-
 .example-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+article {
+    margin-top: 10px;
 }
