@@ -9,7 +9,7 @@ export default class AnimatedText extends Component {
     }
 
     componentDidMount(){
-        this.myTween = TweenMax.to(this.myElement, 1.5, {x: 100, rotation: 720, scale: 1, ease: Bounce.easeOut});
+        this.myTween = TweenMax.to(this.myElement, 1.5, {rotation: 720, scale: 1, ease: Bounce.easeOut});
       }
 
 

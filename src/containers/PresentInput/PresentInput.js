@@ -46,7 +46,7 @@ class PresentInput extends Component {
         const selectedStyle = styles[this.props.inputs.style.value];
         return (
             
-        <div className={`${cssStyle.flex} ${cssStyle.flexRow}`}>
+        <div className={cssStyle.flex}>
             {errorModal}
             {createdPresent}
             <div className={cssStyle.inputCard}>
@@ -58,13 +58,20 @@ class PresentInput extends Component {
            </div>
 
            <div className={`${cssStyle.flex} ${cssStyle.flexCol}`}>
-                <TimerMessage title="Invitation" text={this.props.inputs.previewText.value} 
-                        cssStyle={selectedStyle.style}
-                        seconds={this.props.seconds}/>
-                <PresentBox  title="Box" text={this.props.inputs.presentTextBox.value} cssStyle={selectedStyle.style} 
-                    component={selectedStyle.component} />
-                <Present title="Little Joy" text={this.props.inputs.presentText.value} 
-                        cssStyle={selectedStyle.style}/> 
+                <div className={cssStyle.preview}>
+                    <TimerMessage title="Invitation" text={this.props.inputs.previewText.value} 
+                            cssStyle={selectedStyle.style}
+                            seconds={this.props.seconds}/>
+                </div>
+                <div className={cssStyle.preview}>
+                    <PresentBox  title="Box" text={this.props.inputs.presentTextBox.value} cssStyle={selectedStyle.style} 
+                        component={selectedStyle.component} />
+                </div>
+                <div className={cssStyle.preview}>
+                    <Present title="Little Joy" text={this.props.inputs.presentText.value} 
+                        cssStyle={selectedStyle.style} /> 
+                </div>
+                
             </div>
         </div>);
     }

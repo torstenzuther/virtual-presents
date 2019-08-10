@@ -12,6 +12,7 @@
 
 .DesktopMenuItem {
     display: inline-block;
+    margin: auto;
 }
 
 .DesktopMenuItem > svg {

@@ -1,5 +1,14 @@
-div .content {
-    margin-top: 60px;
-    width: 100%;
-    padding: 10px;
+.content {
+    margin-top: 80px;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    flex: 1;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
