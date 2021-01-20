@@ -13,6 +13,7 @@ To start locally on port 3000, run
 ## Tech
 
 - React.js + Redux + Redux-Saga
+- Material UI
 - Firebase realtime database
 - Firebase hosting
 - Paypal for payment
