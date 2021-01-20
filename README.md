@@ -6,7 +6,9 @@ It allows you to signup / signin and create virtual presents with a little gift 
 additionally a timer revealing when the virtual present can be opened.  It generates a QR code which you can then 'gift' away. It integrates paypal so that gifts must be purchased before they can be viewed.
 
 There is a running instance on https://virtual-presents.web.app/.
+To start locally on port 3000, run
 
+`npm install && npm run start`
 
 ## Tech
 
